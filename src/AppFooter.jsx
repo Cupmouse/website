@@ -13,9 +13,9 @@ export default function AppFooter() {
                 <Logo width="200px" height="30px" />
               </Grid.Column>
               <Grid.Column width={4}>
-                <Header as='h4' content='About' />
+                <Header as='h4' content='Service Links' />
                 <List link>
-                  <List.Item as='a'>Sitemap</List.Item>
+                  <List.Item as='a'>Home</List.Item>
                   <List.Item as='a'>Contact Us</List.Item>
                   <List.Item as='a'>Religious Ceremonies</List.Item>
                   <List.Item as='a'>Gazebo Plans</List.Item>
@@ -23,10 +23,10 @@ export default function AppFooter() {
               </Grid.Column>
               <Grid.Column width={4}>
                 <Header as='h4'>
-                  Footer Header
+                  About
                 </Header>
                 <p>
-                  Extra space for a call to action inside the footer that could help re-engage users.
+                  Based in Japan
                 </p>
               </Grid.Column>
             </Grid.Row>

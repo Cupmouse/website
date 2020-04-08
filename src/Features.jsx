@@ -20,19 +20,13 @@ export default function Features() {
             <p className="bigger-text">
               You will pay for how much data you expect to fetch in a month.
             </p>
+            <p className="bigger-text">
+              This is best for customers with small businesses and individuals
+              and flexible for customers running big businesses.
+            </p>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column>
-            <Icon size="massive" name="book" className="feature-book" />
-            <Header size="large" content="Intuitive API Libraries" />
-            <p className="bigger-text">
-              Libraries are available for fast and easy development.
-            </p>
-            <p className="bigger-text">
-              Popular platform/language such as NodeJS, Python are supported.
-            </p>
-          </Grid.Column>
           <Grid.Column>
             <Icon size="massive" name="file alternate outline" className="feature-file" />
             <Header size="large" content="Server Side Formatting" />
@@ -41,6 +35,13 @@ export default function Features() {
             </p>
             <p className="bigger-text">
               You never have to worry about performance of your favorite script language or of local computing resource used up by data formatting.
+            </p>
+          </Grid.Column>
+          <Grid.Column>
+            <Icon size="massive" name="book" className="feature-book" />
+            <Header size="large" content="Intuitive API Libraries" />
+            <p className="bigger-text">
+              Libraries are available for fast and easy development.
             </p>
           </Grid.Column>
         </Grid.Row>

@@ -5,7 +5,7 @@ export default function Statistics() {
   return (
     <Container style={{ margin: '4em 0' }}>
       <Grid columns={3} divided textAlign="center">
-        <Grid.Row>
+        <Grid.Row verticalAlign='bottom'>
           <Grid.Column>
             <Statistic>
               <Statistic.Label>Accumulated</Statistic.Label>
@@ -14,7 +14,7 @@ export default function Statistics() {
             <p>of raw data for over a one year</p>
           </Grid.Column>
           <Grid.Column>
-            <Statistic>
+            <Statistic size="large">
               <Statistic.Label>Plan starts from</Statistic.Label>
               <Statistic.Value>$15</Statistic.Value>
             </Statistic>
