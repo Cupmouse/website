@@ -3,7 +3,7 @@ import { Container, Grid, Statistic } from 'semantic-ui-react';
 
 export default function Statistics() {
   return (
-    <Container style={{ margin: '4em 0' }}>
+    <Container style={{ paddingTop: "2em" }}>
       <Grid columns={3} divided textAlign="center">
         <Grid.Row verticalAlign='bottom'>
           <Grid.Column>
@@ -15,15 +15,15 @@ export default function Statistics() {
           </Grid.Column>
           <Grid.Column>
             <Statistic size="large">
-              <Statistic.Label>Plan starts from</Statistic.Label>
-              <Statistic.Value>$15</Statistic.Value>
+              <Statistic.Label>Starts from</Statistic.Label>
+              <Statistic.Value>$1.5</Statistic.Value>
             </Statistic>
-            <p>per month</p>
+            <p>/GB month</p>
           </Grid.Column>
           <Grid.Column>
             <Statistic>
-              <Statistic.Label>Average API Latency</Statistic.Label>
-              <Statistic.Value>100ms</Statistic.Value>
+              <Statistic.Label>Average API Response Time</Statistic.Label>
+              <Statistic.Value>~2000ms</Statistic.Value>
             </Statistic>
             <p>API based on robust AWS platform</p>
           </Grid.Column>
