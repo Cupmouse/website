@@ -1,9 +1,32 @@
-.ui.table tr td {
-  /* border-top: 0px !important; */
+.bigger-text {
+  font-size: 1.4em;
 }
 
-.bigger-text {
-  font-size: 1.2em;
+.normal-text {
+  font-size: 1.25em;
+}
+
+#test-api-list {
+  /* runkit overwraps with this list, raise the z index */
+  position: inherit;
+  z-index: 1;
+}
+
+#test-api-list .selected-item {
+  padding-right: 1em;
+  border-right: solid #d40000ff;
+  box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px 0;
+}
+
+#test-api-list div:hover {
+  box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px 0;
+}
+
+#test-api-list div {
+  margin: 0.6em 0;
+  padding: 0.8em 0.4em 0.8em 0.4em;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .feature-fire {

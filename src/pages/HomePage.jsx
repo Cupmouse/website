@@ -1,43 +1,44 @@
 import React from 'react';
-import { Header, Divider, Container, Button } from 'semantic-ui-react';
+import { Header, Divider, Container, Segment, Message } from 'semantic-ui-react';
 
+import PlayGround from '../home/PlayGround';
 import Statistics from '../home/Statistics';
 import Features from '../home/Features';
-import Supports from '../home/Supports';
-import PriceCalc from '../home/PriceCalc';
+import Supported from '../home/Supported';
+import Machinegun from '../home/Machinegun';
+import OrderForm from '../home/OrderForm';
 
 export default function HomePage() {
   return (
     <div>
+      {/* For when we will start operation, please contact us by email: mail@exchangedataset.cc */}
+      <Message icon="warning" content="We are currently preparing to start this service. " />
       <Container text textAlign="center">
-        <Header as="h1" style={{ margin: '2em 0', fontSize: '3em' }}>
-          Replay Historical Cryptocurrency Market Data
+        <Header as="h1" style={{ marginTop: '2em', fontSize: '3em' }}>
+          Replay Cryptocurrency Historical Market Data
         </Header>
-        <p className="bigger-text">
+        <p className="bigger-text" style={{marginBottom: '2em'}}>
           We provide one of the most detailed and reliable historical data through intuitive API.
         </p>
-        <Button
-          primary
-          size="big"
-          style={{ margin: '2em 0' }}
-          as="a"
-          href="https://repl.it/@nozomushimaoka/exchangedataset-node-examples"
-          target="_blank"
-          content="Test our API"
-        />
       </Container>
-      <Statistics />
+      <PlayGround style={{ padding: '6em 0' }} />
+      <Statistics style={{ padding: "6em 0" }} />
+      <Features style={{ padding: '6em 0' }} />
       <div style={{ padding: '2em 0' }}>
-        <Divider horizontal><Header size="huge" content="Features" /></Divider>
-        <Features />
-      </div>
-      <div style={{ padding: '2em 0' }}>
-        <Divider horizontal><Header size="huge" content="Supported Platform/Language" /></Divider>
-        <Supports />
+        <Divider horizontal><Header size="huge" content="Supported Platform" /></Divider>
+        <Supported />
       </div>
       <div style={{ padding: '2em 0'}}>
-        <Divider horizontal><Header size="huge" content="Price Calculator" /></Divider>
-        <PriceCalc />
+        <Container style={{ padding: '2em 0' }} textAlign="center">
+          <Segment raised style={{ padding: '1em' }}>
+            <Header size="huge" content="Get Your API-key" />
+            <OrderForm />
+          </Segment>
+        </Container>
+      </div>
+      <div style={{ padding: '2em 0' }}>
+        <Divider horizontal><Header size="huge" content="There is More" /></Divider>
+        <Machinegun />
       </div>
     </div>
   );

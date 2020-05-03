@@ -11,10 +11,10 @@ export default function Pricing() {
           Our price structure is based on "Tickets" which is similar to prepaid card and has "Quota" and "Expiry Date".
         </p>
         <p className="bigger-text">
-          Quota is consumed by the amount of data transferred or scanned by calling our API.
+          Quota is the balance of ticket which is consumed by the amount of data transferred or scanned by calling our API depending on endpoint.
         </p>
         <p className="bigger-text">
-          In terms of transferred amount, even if a response is compressed, it will always be calculated based on the raw data size.
+          Transferred amount is always calculated based on the raw data size even if the response is compressed.
         </p>
         <p className="bigger-text">
           Once you buy tickets, it will be attached to your API-key and you can immidiately interact with our API.

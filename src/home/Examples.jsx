@@ -4,7 +4,7 @@ import { Container, Grid, Header, Icon } from 'semantic-ui-react';
 export default function Features(props) {
   return (
     <Container {...props}>
-      <Grid columns={3} stackable textAlign="center">
+      <Grid columns={3} textAlign="center">
         <Grid.Row>
           <Grid.Column>
             <Icon size="massive" name="fire" className="feature-fire" />

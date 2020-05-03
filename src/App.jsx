@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route,  } from 'react-router-dom';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 import AppFooter from './AppFooter';
 import TopMenu from './TopMenu';
 import HomePage from './pages/HomePage';
+import { STRIPE_PUBLIC } from './constants';
+
+const stripePromise = loadStripe(STRIPE_PUBLIC);
 
 export default class App extends Component {
   render() {
@@ -12,9 +16,9 @@ export default class App extends Component {
         <header>
           <TopMenu />
         </header>
-        <BrowserRouter>
-          <Route path="/" component={HomePage} />
-        </BrowserRouter>
+        <Elements stripe={stripePromise}>
+          <HomePage />
+        </Elements>
         <AppFooter />
       </div>
     );

@@ -7,10 +7,10 @@ import { ReactComponent as LogoBitmex } from '../logos/bitmex.svg';
 import { ReactComponent as LogoBitfinex } from '../logos/bitfinex.svg';
 import { ReactComponent as LogoBitflyer } from '../logos/bitflyer.svg';
 
-export default function Supports() {
+export default function Supported() {
   return (
     <Container style={{ padding: '2em 0' }} textAlign="center">
-      <Grid columns={1} divided>
+      <Grid columns={1} stackable divided>
         <GridRow>
           <GridColumn>
             <LogoNodeJS width="auto" height="7em" />
@@ -18,7 +18,7 @@ export default function Supports() {
         </GridRow>
       </Grid>
       {/* <LogoPython width="auto" height="7em" /> */}
-      <Grid columns={3} divided>
+      <Grid columns={3} stackable divided>
         <GridRow>
           <GridColumn>
             <LogoBitmex width="auto" height="2em" />
