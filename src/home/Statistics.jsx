@@ -8,9 +8,9 @@ export default function Statistics() {
         <Grid.Column>
           <Statistic>
             <Statistic.Label>Accumulated</Statistic.Label>
-            <Statistic.Value>4TB+</Statistic.Value>
+            <Statistic.Value>7TB+</Statistic.Value>
           </Statistic>
-          <p>of raw data for over a one year</p>
+          <p>of raw data for over a year</p>
         </Grid.Column>
         <Grid.Column>
           <Statistic size="large">

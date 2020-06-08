@@ -31,7 +31,7 @@ export default function Features(props) {
               Libraries are available for fast and easy development.
             </p>
             <p className="bigger-text">
-              Currently, we support Node.JS only.
+              Currently, we only support Node.JS.
             </p>
           </Grid.Column>
         </Grid.Row>

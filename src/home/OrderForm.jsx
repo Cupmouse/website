@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Message, Segment, Radio, Header, Table, Icon, Button, Input, Modal, Step } from 'semantic-ui-react';
-import { CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
-import { NUMBER_REGEX, EMAIL_REGEX, calcPrice, ORDER_URL, APIKEY_CONSOLE_URL } from '../constants';
+import { ElementsConsumer } from '@stripe/react-stripe-js';
+import { NUMBER_REGEX, EMAIL_REGEX, calcPrice, APIKEY_CONSOLE_URL } from '../constants';
+import OrderModal from '../OrderModal';
+import PriceDetail from './PriceDetail';
 
 const examples = [
   {
@@ -18,6 +19,12 @@ const examples = [
     time: 58017,
   },
   {
+    exchange: "Bitflyer",
+    channel: "executions_FX_BTC_JPY",
+    minuteSize: 0.000159854990327,
+    time: 332546,
+  },
+  {
     exchange: "Bitmex",
     channel: "orderBookL2",
     minuteSize: 0.00261229901064,
@@ -27,6 +34,12 @@ const examples = [
     channel: "book_tBTCUSD",
     minuteSize: 0.000956595562618,
     time: 200524,
+  },
+  {
+    exchange: "Bitflyer",
+    channel: "board_FX_BTC_JPY",
+    minuteSize: 0.0012000080654,
+    time: 498695,
   },
 ]
 
@@ -48,128 +61,6 @@ const suggested = [
   },
 ]
 
-class OrderModal extends React.Component {
-  state = {
-    error: null,
-    loading: false,
-    modalOpen: false,
-  }
-
-  handleSubmit = async () => {
-    try {
-      const { stripe, elements, email, quota, onComplete } = this.props;
-
-      if (!stripe || !elements) {
-        return;
-      }
-  
-      this.setState({
-        loading: true,
-      });
-  
-      // request the begin of payment
-      const response = await window.fetch(ORDER_URL, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        redirect: 'error',
-        body: JSON.stringify({
-          email,
-          quota: quota.toString(),
-        }),
-      }).then((res) => res.json());
-      if ('error' in response) {
-        throw new Error(response.error);
-      }
-  
-      // approve payment intent
-      const result = await stripe.confirmCardPayment(response.clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        }
-      });
-  
-      if (result.error) {
-        throw new Error(result.error);
-      } else {
-        if (result.paymentIntent.status === 'succeeded') {
-          this.setState({
-            error: null,
-            loading: false,
-          });
-          onComplete();
-        }
-      }
-    } catch (e) {
-      this.setState({
-        error: e.message,
-        loading: false,
-      })
-    }
-  };
-  
-  render() {
-    const { stripe, elements, modalOpen, quota, onCancel } = this.props;
-    const { error, loading } = this.state;
-    const okDisabled = stripe === null || elements === null || loading;
-
-    return (
-      <Modal open={modalOpen}>
-        <Modal.Header content="Place An Order" />
-        <Modal.Content>
-          {
-            error !== null ? (
-              <Message
-                negative
-                content={error}
-              />
-            ) : ''
-          }
-          <p>You are ordering a new API-key with {quota}GB of quota.</p>
-          <p>And we are charging you:</p>
-          <p className='bigger-text'>${calcPrice(quota).toString()}</p>
-          <p>To complete the purchase, enter your credit card number below and click the button "Confirm Payment".</p>
-          <p style={{ fontWeight: 'bold' }}>Payment procedure will immidiately start and can not be cancelled.</p>
-          <p>Please note that we don't accept any cancels or refunds.</p>
-          <Segment>
-            <CardElement />
-          </Segment>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button
-            primary
-            content="Confirm Payment"
-            disabled={okDisabled}
-            loading={loading}
-            onClick={this.handleSubmit}
-          />
-          <Button
-            content="Cancel"
-            disabled={loading}
-            onClick={onCancel}
-          />
-        </Modal.Actions>
-      </Modal>
-    )
-  }
-}
-
-OrderModal.propTypes = {
-  stripe: PropTypes.object,
-  elements: PropTypes.object,
-  email: PropTypes.string.isRequired,
-  quota: PropTypes.number.isRequired,
-  modalOpen: PropTypes.bool.isRequired,
-  onCancel: PropTypes.func.isRequired,
-};
-
-OrderModal.defaultProps = {
-  stripe: null,
-  elements: null,
-}
-
 export default class OrderForm extends React.Component {
   state = {
     quotaStr: '1',
@@ -177,13 +68,14 @@ export default class OrderForm extends React.Component {
     error: null,
     modalOpen: false,
     successOpen: false,
+    priceDetailOpen: false,
   }
 
   render() {
-    const { quotaStr, email, error, modalOpen, successOpen } = this.state;
+    const { quotaStr, email, error, modalOpen, successOpen, priceDetailOpen } = this.state;
     const isNumber = NUMBER_REGEX.test(quotaStr);
     const quota = Number.isNaN(+quotaStr) ? 0 : +quotaStr;
-    const price = isNumber ? calcPrice(quota) : 0;
+    const price = isNumber ? calcPrice(quota).reduce((p, c) => p+c) : 0;
     const isEmail = EMAIL_REGEX.test(email);
 
     return (
@@ -246,7 +138,17 @@ export default class OrderForm extends React.Component {
           }}
           error={!isNumber}
         />
-        <p style={{margin: "1em 0", fontSize: "3em"}}>${price.toFixed(2)} /month</p>
+        <p
+          style={{
+            margin: "1em 0",
+            fontSize: "3em",
+            cursor: "pointer",
+            borderBottom: "dotted 1px",
+          }}
+          onClick={() => this.setState({ priceDetailOpen: true })}
+        >
+          ${price.toFixed(2)} /month
+        </p>
         <Header size="large" content="You have access to all data we have, and can fetch..." />
         <Table>
           <Table.Header>
@@ -333,6 +235,11 @@ export default class OrderForm extends React.Component {
             <Button content="OK" onClick={() => this.setState({ successOpen: false })} />
           </Modal.Actions>
         </Modal>
+        <PriceDetail
+          quota={quota}
+          open={priceDetailOpen}
+          onCloseButton={() => this.setState({ priceDetailOpen: false })}
+        />
       </div>
     );
   }

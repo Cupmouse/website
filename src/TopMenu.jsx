@@ -57,15 +57,13 @@ class TopMenuDesktop extends Component {
             <Menu.Item>
               <Logo width="200px" height="30px" />
             </Menu.Item>
-            <Menu.Item as="a">
+            <Menu.Item as="a" href="//docs.exchangedataset.cc/" target="_blank">
               Documentation
               {" "}
               <Icon name="external" />
             </Menu.Item>
             <Menu.Item position="right">
-              <Button as="a">
-                Contact Us
-              </Button>
+              <Button as="a" href="mailto://support@exchangedataset.cc/" content="Contact Us" />
             </Menu.Item>
           </Container>
         </Menu>

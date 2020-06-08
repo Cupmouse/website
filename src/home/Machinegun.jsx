@@ -19,7 +19,7 @@ const list = [
   [
     {
       title: "Server Side Formatting",
-      content: "Standard formatting is done in the server side, reducing client work load.",
+      content: "Standard formatting is done in server side, reducing client work load.",
     },
     {
       title: "Fast Snapshot",
@@ -33,7 +33,7 @@ const list = [
   [
     {
       title: "Formatted Data",
-      content: "We provide formatted data for orderbook and trade channel.",
+      content: "We provide formatted data for orderbook and trade channels.",
     },
     {
       title: "Raw Data",
@@ -47,7 +47,7 @@ const list = [
   [
     {
       title: "Cut Fixed Cost",
-      content: "Our service eliminates initial consts and cuts the fixed costs for maintainance.",
+      content: "Our service eliminates initial consts and cuts the fixed costs for maintenance.",
     },
   ]
 ]

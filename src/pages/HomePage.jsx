@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Divider, Container, Segment, Message } from 'semantic-ui-react';
+import { Header, Divider, Container, Segment } from 'semantic-ui-react';
 
 import PlayGround from '../home/PlayGround';
 import Statistics from '../home/Statistics';
@@ -11,8 +11,6 @@ import OrderForm from '../home/OrderForm';
 export default function HomePage() {
   return (
     <div>
-      {/* For when we will start operation, please contact us by email: mail@exchangedataset.cc */}
-      <Message icon="warning" content="We are currently preparing to start this service. " />
       <Container text textAlign="center">
         <Header as="h1" style={{ marginTop: '2em', fontSize: '3em' }}>
           Replay Cryptocurrency Historical Market Data
