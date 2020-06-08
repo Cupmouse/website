@@ -12,9 +12,9 @@ export default class PriceDetail extends Component {
           if (classIndex === 0) {
             name = `First ${PRICING[classIndex].end}GB`;
           } else if (classIndex === PRICING.length - 1) {
-            name = `From ${PRICING[classIndex - 1].end}GB`;
+            name = `From ${PRICING[classIndex - 1].end+1}GB`;
           } else {
-            name = `${PRICING[classIndex - 1].end}GB to ${PRICING[classIndex].end}GB`;
+            name = `${PRICING[classIndex - 1].end+1}GB to ${PRICING[classIndex].end}GB`;
           }
           const classPrice = PRICING[classIndex].price;
 
