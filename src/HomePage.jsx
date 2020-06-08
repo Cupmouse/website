@@ -1,12 +1,12 @@
 import React from 'react';
 import { Header, Divider, Container, Segment } from 'semantic-ui-react';
 
-import PlayGround from '../home/PlayGround';
-import Statistics from '../home/Statistics';
-import Features from '../home/Features';
-import Supported from '../home/Supported';
-import Machinegun from '../home/Machinegun';
-import OrderForm from '../home/OrderForm';
+import PlayGround from './components/PlayGround';
+import Statistics from './components/Statistics';
+import Features from './components/Features';
+import Supported from './components/Supported';
+import Machinegun from './components/Machinegun';
+import OrderForm from './components/OrderForm';
 
 export default function HomePage() {
   return (
