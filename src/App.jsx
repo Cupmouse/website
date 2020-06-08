@@ -4,7 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 import AppFooter from './AppFooter';
 import TopMenu from './TopMenu';
-import HomePage from './pages/HomePage';
+import HomePage from './HomePage';
 import { STRIPE_PUBLIC } from './constants';
 
 const stripePromise = loadStripe(STRIPE_PUBLIC);
