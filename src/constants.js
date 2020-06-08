@@ -1,5 +1,5 @@
 export const ORDER_URL = process.env.NODE_ENV === 'production' ? 'https://accountapi.exchangedataset.cc/customer/prepare' : 'http://localhost:3002/customer/prepare';
-export const STRIPE_PUBLIC = process.env.STRIPE_ENV === 'live' ? 'pk_live_Z1dwHJmuM9tU7iHih8iNkIsX00eJCHz6FL' : 'pk_test_gSZxwrZFpWcMxhemNSyAx53t00xr5iuhNT';
+export const STRIPE_PUBLIC = process.env.STRIPE_ENV === 'live' ? 'pk_live_Z1dwHJmuM9tU7iHih8iNkIsX00eJCHz6FL' : 'pk_test_51GWzmfIpcaZiTxkcFrShBkmmYqXqcSLEbPCxzW7e0dpFBFskbEyKxZTdzxiTuqIBImRv3rCm3ZsiHxirNbnb7JLp00PoH5Wac9';
 export const APIKEY_CONSOLE_URL = 'https://console.exchangedataset.cc/';
 export const NUMBER_REGEX = /^[1-9][0-9]*$/;
 export const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
