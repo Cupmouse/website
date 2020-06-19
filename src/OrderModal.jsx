@@ -48,7 +48,7 @@ export default class OrderModal extends Component {
       });
   
       if (result.error) {
-        throw new Error(result.error);
+        throw result.error;
       } else {
         if (result.paymentIntent.status === 'succeeded') {
           this.setState({

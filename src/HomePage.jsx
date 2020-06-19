@@ -16,7 +16,7 @@ export default function HomePage() {
           Replay Cryptocurrency Historical Market Data
         </Header>
         <p className="bigger-text" style={{marginBottom: '2em'}}>
-          We provide one of the most detailed and reliable historical data through intuitive API.
+          Liberating access to historical market data
         </p>
       </Container>
       <PlayGround style={{ padding: '6em 0' }} />

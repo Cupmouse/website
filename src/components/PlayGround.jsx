@@ -7,19 +7,22 @@ import classNames from 'classnames';
 const sources = [
   {
     name: "Stream Bitmex 'XBTUSD' orderbook from 2020-1-1",
-    source: `const { createClient, LineType } = require('exchangedataset-node');
+    source: `const { createClient } = require('exchangedataset-node');
 
 const client = createClient({
   apikey: "demo"
 });
     
 const stream = async () => {
-  const req = client.replay()
-    .bitmex(["orderBookL2_XBTUSD"])
-    .start("2020/1/1 00:00:00Z")
-    .end("2020/1/1 00:01:00Z")
-    .build();
+  const req = client.replay({
+    filter: {
+      bitmex: ['orderBookL2_XBTUSD'],
+    },
+    start: '2020/1/1 00:00:00Z',
+    end: '2020/1/1 00:01:00Z',
+  });
 
+  // A snapshot is included at the beggining of every request to orderbook channel
   for await (const line of req.stream()) {
     console.log(line);
   }
@@ -29,22 +32,25 @@ stream()`,
   },
   {
     name: "Stream Bitflyer 'FX_BTC_USD' orderbook from 2020-1-1",
-    source: `const { createClient, LineType } = require('exchangedataset-node');
+    source: `const { createClient } = require('exchangedataset-node');
 
 const client = createClient({
   apikey: "demo"
 });
     
 const stream = async () => {
-  const req = client.replay()
-    .bitflyer([
-      "lightning_board_FX_BTC_JPY",
-      "lightning_board_snapshot_FX_BTC_JPY"
-    ])
-    .start("2020/1/1 00:00:00Z")
-    .end("2020/1/1 00:01:00Z")
-    .build();
+  const req = client.replay({
+    filter: {
+      bitflyer: [
+        'lightning_board_FX_BTC_JPY',
+        'lightning_board_snapshot_FX_BTC_JPY',
+      ],
+    },
+    start: '2020/1/1 00:00:00Z',
+    end: '2020/1/1 00:01:00Z',
+  });
 
+  // We support snapshot for lightning_board_snapshot_ channel
   for await (const line of req.stream()) {
     console.log(line);
   }
@@ -54,28 +60,23 @@ stream()`,
   },
   {
     name: "Stream Bitmex 'XBTUSD' trade and Bitflyer 'FX_BTC_JPY' executions from 2020-1-1",
-    source: `const { createClient, replay, LineType } = require('exchangedataset-node');
+    source: `const { createClient, replay } = require('exchangedataset-node');
 
 const client = createClient({
   apikey: "demo"
 });
 
 const stream = async () => {
-  const req = client.replay()
-    .bitmex(
-      replay.bitmex()
-        .trade(["XBTUSD"])
-        .build()
-    )
-    .bitflyer(
-      replay.bitflyer()
-        .executions(["FX_BTC_JPY"])
-        .build()
-    )
-    .start("2020/1/1 00:30:00Z")
-    .end("2020/1/1 00:31:00Z")
-    .build();
+  const req = client.replay({
+    filter: {
+      bitmex: ['trade_XBTUSD'],
+      bitflyer: ['lightning_executions_FX_BTC_JPY'],
+    },
+    start: '2020/1/1 00:0:00Z',
+    end: '2020/1/1 00:01:00Z',
+  });
 
+  // Streaming multiple exchanges' channels at once
   for await (const line of req.stream()) {
     console.log(line);
   }
