@@ -21,7 +21,7 @@ export default function Statistics() {
         </Grid.Column>
         <Grid.Column>
           <Statistic>
-            <Statistic.Label>Supported Exchanges</Statistic.Label>
+            <Statistic.Label>Supporting</Statistic.Label>
             <Statistic.Value>3</Statistic.Value>
           </Statistic>
           <p>exchanges</p>

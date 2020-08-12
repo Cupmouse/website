@@ -1,6 +1,8 @@
 import React from 'react';
 import { Message, Segment, Radio, Header, Table, Icon, Button, Input, Modal, Step } from 'semantic-ui-react';
 import { ElementsConsumer } from '@stripe/react-stripe-js';
+import ReactGA from 'react-ga';
+
 import { NUMBER_REGEX, EMAIL_REGEX, calcPrice, APIKEY_CONSOLE_URL } from '../constants';
 import OrderModal from '../OrderModal';
 import PriceDetail from './PriceDetail';
@@ -81,7 +83,7 @@ export default class OrderForm extends React.Component {
     return (
       <div>
         <div style={{ padding: '3em 0 3em 0' }}>
-          <Step.Group stackable>
+          <Step.Group>
             <Step>
               <Icon name='mail' />
               <Step.Content>
@@ -215,10 +217,19 @@ export default class OrderForm extends React.Component {
               quota={quota}
               modalOpen={modalOpen}
               onCancel={() => this.setState({ modalOpen: false })}
-              onComplete={() => this.setState({
-                modalOpen: false,
-                successOpen: true,
-              })}
+              onComplete={() => {
+                this.setState({
+                  modalOpen: false,
+                  successOpen: true,
+                });
+                ReactGA.event({
+                  category: "purchase",
+                  action: "purchase",
+                  label: "purchase",
+                  value: price,
+                });
+              }
+              }
             />
           )}
         </ElementsConsumer>

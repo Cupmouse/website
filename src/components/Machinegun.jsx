@@ -8,8 +8,8 @@ const list = [
       content: "Do not pay expensive yearly payment to get full access, you always get the full access to our service.",
     },
     {
-      title: "Competitive Price Structure",
-      content: "Our price structure is simple and attractive, yet very flexible.",
+      title: "Pay For Transfer",
+      content: "Best for individuals and small business owners, flexible for customers running big businesses.",
     },
     {
       title: "High Avaiablility",
@@ -40,16 +40,10 @@ const list = [
       content: "We also provide raw WebSocket data native to exchanges including a partial support for a snapshot.",
     },
     {
-      title: "Pay For Transfer",
-      content: "Best for individuals and small business owners, flexible for customers running big businesses.",
-    },
-  ],
-  [
-    {
       title: "Cut Fixed Cost",
       content: "Our service eliminates initial consts and cuts the fixed costs for maintenance.",
     },
-  ]
+  ],
 ]
 
 export default function Machinegun() {
