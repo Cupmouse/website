@@ -17,7 +17,6 @@ export default function AppFooter() {
                 <List link>
                   <List.Item as='a'>Home</List.Item>
                   <List.Item as='a'>Contact Us</List.Item>
-                  <List.Item as='a'>Contact Us</List.Item>
                 </List>
               </Grid.Column>
               <Grid.Column width={4}>

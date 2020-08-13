@@ -1,9 +1,15 @@
-.bigger-text {
-  font-size: 1.4em;
+@import url(https://fonts.googleapis.com/css?family=Cousine:400&subset=latin);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin);
+
+.title-view {
+  height: 60vh;
+  text-align: center;
 }
 
-.normal-text {
-  font-size: 1.25em;
+#title-text {
+  font-size: 3em;
+  font-weight: 700;
+  margin: 0.33em 0;
 }
 
 #test-api-list {

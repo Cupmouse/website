@@ -1,0 +1,8 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@headerFont: 'Cousine';
+@pageFont: 'Lato';
+@importGoogleFonts : false;
+@fontSize: 1.3em;

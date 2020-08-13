@@ -7,13 +7,13 @@ export default function Features(props) {
       <Grid rows={3} columns={2} stackable verticalAlign="middle">
         <Grid.Row>
           <Grid.Column width={10} textAlign="right">
-            <Header size="huge" content="Be Free From Handling Datasets" />
-            <p className="bigger-text">
+            <Header size="huge" content="Be Free From Datasets" />
+            <p>
               There always is a hidden cost of maintaining datasets such as
               finding reliable storage, spending human resources in formatting data,
               ensuring access from multiple environments, e.g.
             </p>
-            <p className="bigger-text">
+            <p>
               Exchangedataset is an on-demand streaming service,
               whose high availability is backed by Amazon Web Service,
               so you can always rely on our infrastructure to take care of storage,
@@ -34,17 +34,14 @@ export default function Features(props) {
               No Plan Restriction,<br />
               Just Transfer Quota
             </Header>
-            <p className="bigger-text">
-              Why spend extra for access to order book data?
+            <p>
+              Why spend extra for access to order book data, or pay annually for access to all data?
             </p>
-            <p className="bigger-text">
-              Why pay annually for access to all data?
-            </p>
-            <p className="bigger-text">
+            <p>
               As long as transfer quota* is available, customers are free to access any data we have, which includes trade, orderbook, ticker,
               and other data recorded from exchanges' public WebSocket in raw and JSON format if it is supported.
             </p>
-            <p>
+            <p style={{fontSize: '0.8em'}}>
               *Snapshot endpoint consumes quota based on scanned bytes rather than transferred bytes.
             </p>
           </Grid.Column>
@@ -52,10 +49,10 @@ export default function Features(props) {
         <Grid.Row>
           <Grid.Column width={10} textAlign="right">
             <Header size="huge" content="Libraries Available" />
-            <p className="bigger-text">
+            <p>
               Libraries are available for fast and easy development.
             </p>
-            <p className="bigger-text">
+            <p>
               We support Node.JS and Python3.
             </p>
           </Grid.Column>

@@ -102,7 +102,7 @@ export default class PlayGround extends Component {
       <Grid container stackable columns={2} {...this.props}>
         <Grid.Column textAlign="right">
           <div style={{ textAlign: "center" }}>
-            <Header size="huge">
+            <Header size="large">
               <Icon name="terminal" />
               Test our API
             </Header>
@@ -114,7 +114,7 @@ export default class PlayGround extends Component {
                   key={i}
                   className={classNames({
                     "normal-text": true,
-                    "selected-item": selected === i
+                    "selected-item": selected === i,
                   })}
                   onClick={() => this.onSourceChange(i)}
                 >

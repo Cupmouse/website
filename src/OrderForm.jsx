@@ -1,10 +1,10 @@
 import React from 'react';
-import { Message, Segment, Radio, Header, Table, Icon, Button, Input, Modal, Step } from 'semantic-ui-react';
+import { Message, Segment, Header, Table, Icon, Button, Input, Modal, Step, Container, Grid, Label } from 'semantic-ui-react';
 import { ElementsConsumer } from '@stripe/react-stripe-js';
 import ReactGA from 'react-ga';
 
-import { NUMBER_REGEX, EMAIL_REGEX, calcPrice, APIKEY_CONSOLE_URL } from '../constants';
-import OrderModal from '../OrderModal';
+import { NUMBER_REGEX, EMAIL_REGEX, calcPrice } from './constants';
+import OrderModal from './OrderModal';
 import PriceDetail from './PriceDetail';
 
 const examples = [
@@ -47,19 +47,33 @@ const examples = [
 
 const suggested = [
   {
+    recommend: {
+      color: "blue",
+      type: "Trade Data"
+    },
     quota: 30,
   },
   {
+    recommend: null,
     quota: 200,
   },
   {
+    recommend: {
+      color: "red",
+      type: "Recommended",
+    },
+    quota: 500,
+  },
+  {
+    recommend: null,
     quota: 1000,
   },
   {
+    recommend: {
+      color: "violet",
+      type: "ENTERPRISE",
+    },
     quota: 3000,
-  },
-  {
-    quota: 10000,
   },
 ]
 
@@ -81,54 +95,58 @@ export default class OrderForm extends React.Component {
     const isEmail = EMAIL_REGEX.test(email);
 
     return (
-      <div>
-        <div style={{ padding: '3em 0 3em 0' }}>
-          <Step.Group>
-            <Step>
-              <Icon name='mail' />
-              <Step.Content>
-                <Step.Title>Enter</Step.Title>
-                <Step.Description>Quota and email address</Step.Description>
-              </Step.Content>
-            </Step>
-        
-            <Step>
-              <Icon name='credit card' />
-              <Step.Content>
-                <Step.Title>Payment</Step.Title>
-                <Step.Description>Enter credit card information</Step.Description>
-              </Step.Content>
-            </Step>
-        
-            <Step>
-              <Icon name='cart' />
-              <Step.Content>
-                <Step.Title>Checkout</Step.Title>
-              </Step.Content>
-            </Step>
-          </Step.Group>
-        </div>
-        <Message warning style={{ padding: '3em 0 3em 0' }} >
-          <Icon name="warning"/>
-          If you already have an account, you can make a new Ticket to an existing API-key by using <a href={APIKEY_CONSOLE_URL}>Exchangedataset API-key Console</a>.
-        </Message>
-        <p className="bigger-text">You can calculate how much it will cost by inputting the desirable quota amount.</p>
-        <Segment.Group style={{ cursor: "pointer" }} horizontal>
-          {
-            suggested.map((sugg) => (
-              <Segment key={sugg.quota} style={{ padding: '2em 0' }} onClick={() => this.setState({ quotaStr: sugg.quota.toString() })}>
-                <Radio
-                  style={{ fontSize: "2em", fontWeight: "bold" }}
-                  label={`${sugg.quota}GB`}
-                  checked={quota === sugg.quota}
-                />
-              </Segment>
-            ))
-          }
-        </Segment.Group>
-        <Header size="large" content="Or, how much are you planning to use?" />
+      <Container {...this.props} textAlign="center">
+      <Header size="huge" content="Order Your API-key" />
+      <Step.Group>
+        <Step>
+          <Icon name='mail' />
+          <Step.Content>
+            <Step.Title>Enter</Step.Title>
+            <Step.Description>Quota and email address</Step.Description>
+          </Step.Content>
+        </Step>
+        <Step>
+          <Icon name='credit card' />
+          <Step.Content>
+            <Step.Title>Payment</Step.Title>
+            <Step.Description>Enter credit card information</Step.Description>
+          </Step.Content>
+        </Step>
+        <Step>
+          <Icon name='cart' />
+          <Step.Content>
+            <Step.Title>Checkout</Step.Title>
+          </Step.Content>
+        </Step>
+      </Step.Group>
+      <Grid columns={suggested.length} textAlign="center" stackable>
+        <Grid.Row stretched>
+            {
+              suggested.map((sugg) => (
+                <Grid.Column>
+                  <Segment key={sugg.quota} shadowed>
+                    <div style={{height: "3em"}}>
+                      {
+                        sugg.recommend ? <Label color={sugg.recommend.color} content={sugg.recommend.type} /> : ""
+                      }
+                    </div>
+                    <p><span style={{fontSize: "2em"}}>${calcPrice(sugg.quota).reduce((p, c) => p+c)}</span>/month</p>
+                    <span>Quota</span>
+                    <p style={{fontSize: "2em"}}>{sugg.quota} GB</p>
+                    <span>API Call</span>
+                    <p style={{fontSize: "2em"}}>Unlimited</p>
+                    <span>Access</span>
+                    <p style={{fontSize: "2em"}}>Unlimited</p>
+                    <Button primary content="Choose" onClick={() => this.setState({ quotaStr: sugg.quota.toString() })}/>
+                  </Segment>
+                </Grid.Column>
+              ))
+            }
+        </Grid.Row>
+        </Grid>
+        <Header size="large" content="Or, you can choose how much you need" />
         <Input
-          size="huge"
+          size="large"
           placeholder="Enter transfer amount in GB"
           label="GB"
           labelPosition="right"
@@ -151,8 +169,7 @@ export default class OrderForm extends React.Component {
         >
           ${price.toFixed(2)} /month
         </p>
-        <Header size="large" content="You have access to all data we have, and can fetch..." />
-        <Table>
+        <Table basic>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Exchange</Table.HeaderCell>
@@ -188,7 +205,7 @@ export default class OrderForm extends React.Component {
           ) : ""
         }
         <Input
-          size="huge"
+          size="large"
           type="email"
           placeholder="Enter your email address"
           value={email}
@@ -251,7 +268,7 @@ export default class OrderForm extends React.Component {
           open={priceDetailOpen}
           onCloseButton={() => this.setState({ priceDetailOpen: false })}
         />
-      </div>
+      </Container>
     );
   }
 }

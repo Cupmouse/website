@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import PropTypes from 'prop-types'
 import { Modal, Table, Button } from "semantic-ui-react"
-import { calcPrice, PRICING } from "../constants";
+import { calcPrice, PRICING } from "./constants";
 
 export default class PriceDetail extends Component {
   getTable(prices) {

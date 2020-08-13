@@ -13,17 +13,17 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-ga": "^3.1.2",
+    "react-i18next": "^11.7.0",
     "react-router-dom": "^5.1.2",
     "react-runkit": "^0.9.0",
     "react-scripts": "3.4.0",
-    "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
     "upload": "yarn build && aws s3 sync build/ s3://exchangedataset-website/"
   },
   "eslintConfig": {
@@ -40,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^5.6.4",
+    "@semantic-ui-react/craco-less": "^1.2.1",
+    "semantic-ui-less": "^2.4.1"
   }
 }
