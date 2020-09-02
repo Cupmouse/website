@@ -69,7 +69,7 @@
   },
   "exchanges": {
     "title": "Supported Exchanges",
-    "detail": "Messages from exchanges' WebSocket are recorded before they are accessed via our API. The exchanges below are fully or partially supported and the list to the right shows which channels are available.",
+    "detail": "Messages from exchanges' WebSocket are recorded before they are accessed via our API. The exchanges below are fully or partially supported and the list to the right shows which channels are pre-recorded and available.",
     "bitmex": {
       "trade": {
         "name": "Trade",
