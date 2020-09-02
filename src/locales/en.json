@@ -27,6 +27,10 @@
   },
   "demo": {
     "title": "API Demo",
+    "detail": {
+      "1": "Our API can be easily integrated to your project using opensource libraries. This demo provides a sandbox environment where you can interact with our API using Node.JS platform. Other programming languages such as Python3, Golang are also supported with the similar syntax via our other libraries. You can edit codes and run them to check if it meets your requirements.",
+      "2": "In this demo, you can lookup any data from any exchanges in any format dating back from UTC 2020-1-1 00:00:00 to 01:00:00."
+    },
     "1": {
       "title": "Bitmex 'XBTUSD' orderbook",
       "comment": "A snapshot is included at the beggining of every request to orderbook channel"

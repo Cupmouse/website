@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Placeholder, Grid, List, Header, Icon } from 'semantic-ui-react';
+import { Placeholder, Grid, List, Header, Icon, Container } from 'semantic-ui-react';
 import Runkit from 'react-runkit';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -92,46 +92,50 @@ stream()`,
   ]
   
   return (
-    <Grid container stackable columns={2} {...props}>
-      <Grid.Column textAlign="right">
-        <div style={{ textAlign: "center" }}>
-          <Header size="large">
-            <Icon name="terminal" />
-            {t('demo.title')}
-          </Header>
-        </div>
-        <List id="test-api-list">
+    <Container {...props}>
+      <Header size="large" textAlign="center" icon="terminal" />
+      <Header size="large" textAlign="center" content={t('demo.title')} />
+      <Container fluid text textAlign="center">
+        <p>{t('demo.detail.1')}</p>
+        <p>{t('demo.detail.2')}</p>
+      </Container>
+      <Grid stackable columns={2}>
+        <Grid.Column textAlign="right">
+          <div style={{ textAlign: "center" }}>
+          </div>
+          <List id="test-api-list">
+            {
+              sources.map((obj, i) => (
+                <List.Item
+                  key={i}
+                  className={classNames({
+                    "normal-text": true,
+                    "selected-item": selected === i,
+                  })}
+                  onClick={() => setSelected(i)}
+                >
+                  {obj.name}
+                </List.Item>
+              ))
+            }
+          </List>
+        </Grid.Column>
+        <Grid.Column>
           {
-            sources.map((obj, i) => (
-              <List.Item
-                key={i}
-                className={classNames({
-                  "normal-text": true,
-                  "selected-item": selected === i,
-                })}
-                onClick={() => setSelected(i)}
-              >
-                {obj.name}
-              </List.Item>
-            ))
+            loading ? (
+              <Placeholder style={{ height: "400px", margin: "0 auto" }}>
+                <Placeholder.Image />
+              </Placeholder>
+            ) : ""
           }
-        </List>
-      </Grid.Column>
-      <Grid.Column>
-        {
-          loading ? (
-            <Placeholder style={{ height: "400px", margin: "0 auto" }}>
-              <Placeholder.Image />
-            </Placeholder>
-          ) : ""
-        }
-        <Runkit
-          minHeight="400px"
-          source={sources[selected].source}
-          nodeVersion="13"
-          onLoad={() => setLoading(false)}
-        />
-      </Grid.Column>
-    </Grid>
+          <Runkit
+            minHeight="400px"
+            source={sources[selected].source}
+            nodeVersion="13"
+            onLoad={() => setLoading(false)}
+          />
+        </Grid.Column>
+      </Grid>
+    </Container>
   );
 };
