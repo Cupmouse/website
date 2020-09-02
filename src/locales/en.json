@@ -4,8 +4,8 @@
     "login": "Login"
   },
   "title": {
-    "title": "Market Data For Everyone",
-    "description": "Reliable, highly detailed historical market data for everyone",
+    "title": "Liberating access to historical data for everyone",
+    "description": "Reliable, highly detailed historical market data tailored for your need",
     "label": {
       "ticklevel": "Tick-level",
       "trade": "Executions",
@@ -16,16 +16,13 @@
   },
   "stats": {
     "accumulated": {
-      "top": "Accumulated",
-      "bottom": "of raw data for over a year"
+      "label": "raw data accumulated"
     },
     "price": {
-      "top": "Starts From",
-      "bottom": "/ month"
+      "label": "lowest per month"
     },
     "exchanges": {
-      "top": "Supporting",
-      "bottom": "exchanges"
+      "label": "Exchanges"
     }
   },
   "demo": {

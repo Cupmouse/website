@@ -16,16 +16,13 @@
   },
   "stats": {
     "accumulated": {
-      "top": "収集したデータ量",
-      "bottom": "以上"
+      "label": "収集したデータ量"
     },
     "price": {
-      "top": "最低利用料金",
-      "bottom": "毎月〜"
+      "label": "最低利用月料金"
     },
     "exchanges": {
-      "top": "対応取引所数",
-      "bottom": "取引所"
+      "label": "対応取引所数"
     }
   },
   "demo": {

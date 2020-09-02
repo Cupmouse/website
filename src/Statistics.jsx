@@ -10,24 +10,21 @@ export default function Statistics() {
       <Grid.Row verticalAlign='bottom'>
         <Grid.Column>
           <Statistic>
-            <Statistic.Label>{t('stats.accumulated.top')}</Statistic.Label>
             <Statistic.Value>7TB+</Statistic.Value>
+            <Statistic.Label>{t('stats.accumulated.label')}</Statistic.Label>
           </Statistic>
-          <p>{t('stats.accumulated.bottom')}</p>
         </Grid.Column>
         <Grid.Column>
           <Statistic size="large">
-            <Statistic.Label>{t('stats.price.top')}</Statistic.Label>
             <Statistic.Value>$10</Statistic.Value>
+            <Statistic.Label>{t('stats.price.label')}</Statistic.Label>
           </Statistic>
-          <p>{t('stats.price.bottom')}</p>
         </Grid.Column>
         <Grid.Column>
           <Statistic>
-            <Statistic.Label>{t('stats.exchanges.top')}</Statistic.Label>
             <Statistic.Value>3</Statistic.Value>
+            <Statistic.Label>{t('stats.exchanges.label')}</Statistic.Label>
           </Statistic>
-            <p>{t('stats.exchanges.bottom')}</p>
         </Grid.Column>
       </Grid.Row>
     </Grid>
