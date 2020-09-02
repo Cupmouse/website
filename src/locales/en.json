@@ -122,7 +122,8 @@
     }
   },
   "supported": {
-    "title": "Supported Programming Languages"
+    "title": "Supported Programming Languages",
+    "detail": "The library is designed to minimize the differences in syntax between languages. This makes it easy to port projects from one language to another. The libraries are available in the following languages:"
   },
   "machinegun": {
     "title": "Full Features",

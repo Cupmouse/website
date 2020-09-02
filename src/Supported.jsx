@@ -11,6 +11,9 @@ export default function Supported(props) {
   return (
     <Container {...props} textAlign="center">
       <Header size="large" content={t('supported.title')} />
+      <Container fluid text textAlign="center">
+        {t('supported.detail')}
+      </Container>  
       <Grid columns={2} stackable divided>
         <GridRow>
           <GridColumn>
