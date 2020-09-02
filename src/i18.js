@@ -4,6 +4,9 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import transEn from './locales/en.json';
 import transJa from './locales/ja.json';
 
+const queries = new URLSearchParams(window.location.search);
+const forceJP = queries.has('lang')
+
 i18n.use(LanguageDetector).use(initReactI18next).init({
   fallbackLng: "en",
   interpolation: {
@@ -18,5 +21,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
     },
   },
 });
+
+if (forceJP) {
+  i18n.changeLanguage('ja')
+}
 
 export default i18n;
