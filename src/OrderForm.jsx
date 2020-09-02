@@ -2,70 +2,75 @@ import React from 'react';
 import { Message, Segment, Header, Icon, Button, Input, Modal, Step, Container, Grid, Label, Tab } from 'semantic-ui-react';
 import { ElementsConsumer } from '@stripe/react-stripe-js';
 import ReactGA from 'react-ga';
+import { withTranslation } from 'react-i18next';
 
 import { NUMBER_REGEX, EMAIL_REGEX, calcPrice } from './constants';
 import OrderModal from './OrderModal';
 import PriceDetail from './PriceDetail';
 import QuotaDetail from './QuotaDetail';
 
-const suggested = [
-  {
-    recommend: {
-      color: "blue",
-      type: "Trade Data"
-    },
-    quota: 30,
-  },
-  {
-    recommend: null,
-    quota: 200,
-  },
-  {
-    recommend: {
-      color: "red",
-      type: "Recommended",
-    },
-    quota: 500,
-  },
-  {
-    recommend: null,
-    quota: 1000,
-  },
-  {
-    recommend: {
-      color: "violet",
-      type: "ENTERPRISE",
-    },
-    quota: 3000,
-  },
-]
-
-export default class OrderForm extends React.Component {
+class OrderForm extends React.Component {
   state = {
     quotaStr: '1',
     email: '',
-    error: null,
     modalOpen: false,
     successOpen: false,
   }
 
   render() {
-    const { quotaStr, email, error, modalOpen, successOpen } = this.state;
+    const { quotaStr, email, modalOpen, successOpen } = this.state;
     const isNumber = NUMBER_REGEX.test(quotaStr);
     const quota = Number.isNaN(+quotaStr) ? 0 : +quotaStr;
     const price = isNumber ? calcPrice(quota).reduce((p, c) => p+c) : 0;
     const isEmail = EMAIL_REGEX.test(email);
 
+    const { t } = this.props
+
+    const suggested = [
+      {
+        recommend: {
+          color: "blue",
+          type: t('order.suggestions.tradedata'),
+        },
+        quota: 30,
+      },
+      {
+        recommend: null,
+        quota: 200,
+      },
+      {
+        recommend: {
+          color: "red",
+          type: t('order.suggestions.recommended'),
+        },
+        quota: 500,
+      },
+      {
+        recommend: null,
+        quota: 1000,
+      },
+      {
+        recommend: {
+          color: "violet",
+          type: t('order.suggestions.enterprise'),
+        },
+        quota: 3000,
+      },
+    ]
+    
     const tabPanes = [
-      { menuItem: 'Price Detail', render: () => (
+      { menuItem: t('order.tabpane.pricedetail'), render: () => (
         <Tab.Pane>
-          <Header content="Price Detail" />
+          <p style={{fontSize: "3em"}} >
+            ${price.toFixed(2)} {t('order.tabpane.permonth')}
+          </p>
+          <Header content={t('order.tabpane.pricedetail')} />
           <PriceDetail quota={quota} />
         </Tab.Pane>
       )},
-      { menuItem: 'Price Detail', render: () => (
+      { menuItem: t('order.tabpane.transferestimate'), render: () => (
         <Tab.Pane>
-          <Header content="Quota Estimate" />
+          <Header content={t('order.tabpane.transferestimate')} />
           <QuotaDetail quota={quota} />
         </Tab.Pane>
       )},
@@ -73,26 +78,26 @@ export default class OrderForm extends React.Component {
 
     return (
       <Container {...this.props} textAlign="center">
-        <Header size="huge" content="Order Your API-key" />
+        <Header size="huge" content={t('order.title')} />
         <Step.Group>
           <Step>
             <Icon name='mail' />
             <Step.Content>
-              <Step.Title>Enter</Step.Title>
-              <Step.Description>Quota and email address</Step.Description>
+              <Step.Title>{t('order.step.1.title')}</Step.Title>
+              <Step.Description>{t('order.step.1.detail')}</Step.Description>
             </Step.Content>
           </Step>
           <Step>
             <Icon name='credit card' />
             <Step.Content>
-              <Step.Title>Payment</Step.Title>
-              <Step.Description>Enter credit card information</Step.Description>
+              <Step.Title>{t('order.step.2.title')}</Step.Title>
+              <Step.Description>{t('order.step.2.detail')}</Step.Description>
             </Step.Content>
           </Step>
           <Step>
             <Icon name='cart' />
             <Step.Content>
-              <Step.Title>Checkout</Step.Title>
+              <Step.Title>{t('order.step.3.title')}</Step.Title>
             </Step.Content>
           </Step>
         </Step.Group>
@@ -107,24 +112,24 @@ export default class OrderForm extends React.Component {
                         sugg.recommend ? <Label color={sugg.recommend.color} content={sugg.recommend.type} /> : ""
                       }
                     </div>
-                    <p><span style={{fontSize: "2em"}}>${calcPrice(sugg.quota).reduce((p, c) => p+c)}</span>/month</p>
-                    <span>Quota</span>
+                    <p><span style={{fontSize: "2em"}}>${calcPrice(sugg.quota).reduce((p, c) => p+c)}</span>{t('order.suggestions.permonth')}</p>
+                    <span>{t('order.suggestions.quota')}</span>
                     <p style={{fontSize: "2em"}}>{sugg.quota} GB</p>
-                    <span>API Call</span>
-                    <p style={{fontSize: "2em"}}>Unlimited</p>
-                    <span>Access</span>
-                    <p style={{fontSize: "2em"}}>Unlimited</p>
-                    <Button primary content="Choose" onClick={() => this.setState({ quotaStr: sugg.quota.toString() })}/>
+                    <span>{t('order.suggestions.apicall')}</span>
+                    <p style={{fontSize: "2em"}}>{t('order.suggestions.unlimited')}</p>
+                    <span>{t('order.suggestions.access')}</span>
+                    <p style={{fontSize: "2em"}}>{t('order.suggestions.unlimited')}</p>
+                    <Button primary content={t('order.suggestions.choose')} onClick={() => this.setState({ quotaStr: sugg.quota.toString() })}/>
                   </Segment>
                 </Grid.Column>
               ))
             }
           </Grid.Row>
         </Grid>
-        <Header size="large" content="Or, you can choose how much you need" />
+        <Header size="large" content={t('order.choosequota')} />
         <Input
           size="large"
-          placeholder="Enter transfer amount in GB"
+          placeholder={t('order.gbplaceholder')}
           label="GB"
           labelPosition="right"
           value={quotaStr}
@@ -135,39 +140,20 @@ export default class OrderForm extends React.Component {
           }}
           error={!isNumber}
         />
-        <p
-          style={{
-            margin: "1em 0",
-            fontSize: "3em",
-            cursor: "pointer",
-            borderBottom: "dotted 1px",
-          }}
-          onClick={() => this.setState({ priceDetailOpen: true })}
-        >
-          ${price.toFixed(2)} /month
-        </p>
         <Tab panes={tabPanes} />
-        <Header size="large" content="Enter Your E-mail Address" />
-        <p>We will send you a email to this address with a API-key and a password neccesary to login to our API Management Console.</p>
-        {
-          error != null ? (
-            <Message error>
-              {error}
-              If you already have an account, please login to API-Key Management Console.
-            </Message>
-          ) : ""
-        }
+        <Header size="large" content={t('order.email.title')} />
+        <p>{t('order.email.detail')}</p>
         <Input
           size="large"
           type="email"
-          placeholder="Enter your email address"
+          placeholder={t('order.email.placeholder')}
           value={email}
           action={(
             <Button
               primary
               icon='cart'
               size="large"
-              content="Proceed"
+              content={t('order.email.proceed')}
               disabled={!isNumber || !isEmail}
               onClick={() => this.setState({ modalOpen: true })}
             />
@@ -204,12 +190,12 @@ export default class OrderForm extends React.Component {
           )}
         </ElementsConsumer>
         <Modal open={successOpen}>
-          <Modal.Header content="Thank you!" />
+          <Modal.Header content={t('order.paymentsuccess.title')} />
           <Modal.Content>
             <Message
               positive
               icon="checkmark"
-              content="Thank you for purchasing our product! We will send you a email with your auto-generated password after the payment is captured."
+              content={t('order.paymentsuccess.detail')}
             />
           </Modal.Content>
           <Modal.Actions>
@@ -220,3 +206,5 @@ export default class OrderForm extends React.Component {
     );
   }
 }
+
+export default withTranslation()(OrderForm);

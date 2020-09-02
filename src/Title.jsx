@@ -1,28 +1,21 @@
 import React from 'react';
-import { Label, Grid } from 'semantic-ui-react';
+import { Label, Grid, Container } from 'semantic-ui-react';
+import { useTranslation } from 'react-i18next';
 
 export default function Title() {
+  const { t } = useTranslation();
+  
   return (
-    <Grid className="title-view" verticalAlign="middle">
+    <Grid className="title-box" columns={1} padded verticalAlign="middle" textAlign="center">
       <Grid.Row>
         <Grid.Column>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                <p id="title-text">Cryptocurrency Historical Market Data</p>
-                <p>Reliable, highly detailed historical market data for everyone</p>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row style={{margin: '1em'}}>
-              <Grid.Column>
-                <Label size="large" content="Tick-level" />
-                <Label size="large" content="Trade" />
-                <Label size="large" content="Orderbook" />
-                <Label size="large" content="Libraries" />
-                <Label size="large" content="Pay-by-transfer" />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+          <p id="title-text">{t('title.title')}</p>
+          <p>{t('title.description')}</p>
+          <Label size="large" content={t('title.label.ticklevel')} />
+          <Label size="large" content={t('title.label.trade')} />
+          <Label size="large" content={t('title.label.orderbook')} />
+          <Label size="large" content={t('title.label.libraries')} />
+          <Label size="large" content={t('title.label.paybytransfer')} />
         </Grid.Column>
       </Grid.Row>
     </Grid>

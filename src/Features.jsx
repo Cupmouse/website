@@ -1,66 +1,60 @@
 import React from 'react';
 import { Container, Grid, Header, Icon } from 'semantic-ui-react';
+import { useTranslation } from 'react-i18next';
 
 export default function Features(props) {
+  const { t } = useTranslation()
+  
   return (
-    <Container {...props}>
-      <Grid rows={3} columns={2} stackable verticalAlign="middle">
-        <Grid.Row>
-          <Grid.Column width={10} textAlign="right">
-            <Header size="huge" content="Be Free From Datasets" />
-            <p>
-              There always is a hidden cost of maintaining datasets such as
-              finding reliable storage, spending human resources in formatting data,
-              ensuring access from multiple environments, e.g.
-            </p>
-            <p>
-              Exchangedataset is an on-demand streaming service,
-              whose high availability is backed by Amazon Web Service,
-              so you can always rely on our infrastructure to take care of storage,
-              formatting and consistency across the environments.
-            </p>
-          </Grid.Column>
-          <Grid.Column width={6} textAlign="left">
-            <Icon size="massive" name="fire" className="feature-fire" />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={6} textAlign="right">
-            <Icon size="massive" name="dollar" className="feature-dollar" />
-          </Grid.Column>
-          <Grid.Column width={10} textAlign="left">
-            <Header size="huge">
-              No Daily Limit,<br />
-              No Plan Restriction,<br />
-              Just Transfer Quota
-            </Header>
-            <p>
-              Why spend extra for access to order book data, or pay annually for access to all data?
-            </p>
-            <p>
-              As long as transfer quota* is available, customers are free to access any data we have, which includes trade, orderbook, ticker,
-              and other data recorded from exchanges' public WebSocket in raw and JSON format if it is supported.
-            </p>
-            <p style={{fontSize: '0.8em'}}>
-              *Snapshot endpoint consumes quota based on scanned bytes rather than transferred bytes.
-            </p>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={10} textAlign="right">
-            <Header size="huge" content="Libraries Available" />
-            <p>
-              Libraries are available for fast and easy development.
-            </p>
-            <p>
-              We support Node.JS and Python3.
-            </p>
-          </Grid.Column>
-          <Grid.Column width={6} textAlign="left">
-            <Icon size="massive" name="book" className="feature-book" />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Container>
+    <div className="features" {...props}>
+      <Container>
+        <Grid columns={2} stackable verticalAlign="middle">
+          <Grid.Row>
+            <Grid.Column width={10} textAlign="right" className="feature-text">
+              <Header size="huge" content={t('features.befree.title')} />
+              <p>{t('features.befree.1')}</p>
+              <p>{t('features.befree.2')}</p>
+            </Grid.Column>
+            <Grid.Column width={6} textAlign="left">
+              <Icon size="massive" name="fire" className="feature-fire" />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
+      <Container>
+        <Grid columns={2} stackable verticalAlign="middle">
+          <Grid.Row>
+            <Grid.Column width={6} textAlign="right">
+              <Icon size="massive" name="dollar" className="feature-dollar" />
+            </Grid.Column>
+            <Grid.Column width={10} textAlign="left">
+              <Header size="huge">
+                {t('features.nolimit.title.1')}<br />
+                {t('features.nolimit.title.2')}<br />
+                {t('features.nolimit.title.3')}
+              </Header>
+              <p>{t('features.nolimit.1')}</p>
+              <p>{t('features.nolimit.2')}</p>
+              <p style={{fontSize: '0.8em'}}>{t('features.nolimit.3')}</p>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
+      <Container>
+        <Grid rows={3} columns={2} stackable verticalAlign="middle">
+          <Grid.Row>
+            <Grid.Column width={10} textAlign="right">
+              <Header size="huge" content={t('features.libraries.title')} />
+              <p>{t('features.libraries.1')}</p>
+              <p>{t('features.libraries.2')}</p>
+              <p>{t('features.libraries.3')}</p>
+            </Grid.Column>
+            <Grid.Column width={6} textAlign="left">
+              <Icon size="massive" name="book" className="feature-book" />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
+    </div>
   );
 };

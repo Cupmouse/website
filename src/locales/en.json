@@ -1,0 +1,220 @@
+{
+  "topmenu": {
+    "documentation": "Documentation",
+    "login": "Login"
+  },
+  "title": {
+    "title": "Market Data For Everyone",
+    "description": "Reliable, highly detailed historical market data for everyone",
+    "label": {
+      "ticklevel": "Tick-level",
+      "trade": "Executions",
+      "orderbook": "Orderbook",
+      "libraries": "Libraries",
+      "paybytransfer": "Pay-by-transfer"
+    }
+  },
+  "stats": {
+    "accumulated": {
+      "top": "Accumulated",
+      "bottom": "of raw data for over a year"
+    },
+    "price": {
+      "top": "Starts From",
+      "bottom": "/ month"
+    },
+    "exchanges": {
+      "top": "Supporting",
+      "bottom": "exchanges"
+    }
+  },
+  "demo": {
+    "title": "API Demo",
+    "1": {
+      "title": "Bitmex 'XBTUSD' orderbook",
+      "comment": "A snapshot is included at the beggining of every request to orderbook channel"
+    },
+    "2": {
+      "title": "Bitflyer 'FX_BTC_JPY' orderbook",
+      "comment": "We support snapshot for lightning_board_snapshot_ channel"
+    },
+    "3": {
+      "title": "Bitmex 'XBTUSD' trade and Bitflyer 'FX_BTC_JPY' executions",
+      "comment": "Streaming multiple exchanges' channels at once"
+    }
+  },
+  "features": {
+    "befree": {
+      "title": "Be Free From Datasets",
+      "1": "There always is a hidden cost of maintaining datasets such as finding reliable storage, spending human resources in formatting data, ensuring access from multiple environments, e.g.",
+      "2": "Exchangedataset is an on-demand streaming service, whose high availability is backed by Amazon Web Service, so you can always rely on our infrastructure to take care of storage, formatting and consistency across the environments."
+    },
+    "nolimit": {
+      "title": {
+        "1": "No Daily Limit,",
+        "2": "No Plan Restriction,",
+        "3": "Just Transfer Quota"
+      },
+      "1": "Why spend extra for access to order book data, or pay annually for access to all data?",
+      "2": "As long as transfer quota* is available, customers are free to access any data we have, which includes trade, orderbook, ticker, and other data recorded from exchanges' public WebSocket in raw and JSON format if it is supported.",
+      "3": "*Snapshot endpoint consumes quota based on scanned bytes rather than transferred bytes. All individual access to endpoints will consume at least 1024 quota."
+    },
+    "libraries": {
+      "title": "Libraries Available",
+      "1": "Integrating a data providing service to your project could be one of the most tiring part.",
+      "2": "We provide the libraries for the most common programming languages, so you can concentrate on your real project, not a boring part of it.",
+      "3": "We support Node.JS, Python3, Go."
+    }
+  },
+  "exchanges": {
+    "title": "Supported Exchanges",
+    "bitmex": {
+      "trade": {
+        "name": "Trade",
+        "detail": "Market trade events"
+      },
+      "orderbookl2": {
+        "name": "OrderbookL2",
+        "detail": "Level-2 orderbook events"
+      },
+      "insurance": {
+        "name": "Insurance",
+        "detail": "Insurance change events"
+      },
+      "liquidation": {
+        "name": "Liquidation",
+        "detail": "Liquidation events"
+      },
+      "settlement": {
+        "name": "Settlement",
+        "detail": "Settlement events"
+      }
+    },
+    "bitfinex": {
+      "trade": {
+        "name": "Trade",
+        "detail": "Market trade events"
+      },
+      "book": {
+        "name": "OrderbookL2",
+        "detail": "Level-2 orderbook events"
+      }
+    },
+    "bitflyer": {
+      "trade": {
+        "name": "Trade",
+        "detail": "Market trade/execution events"
+      },
+      "book": {
+        "name": "OrderbookL2 Difference",
+        "detail": "Level-2 orderbook difference events"
+      },
+      "booksnapshot": {
+        "name": "OrderbookL2 Snapshot",
+        "detail": "Level-2 orderbook snapshot events"
+      },
+      "ticker": {
+        "name": "Ticker",
+        "detail": "Highest detailed ticker available"
+      }
+    }
+  },
+  "supported": {
+    "title": "Supported Programming Languages"
+  },
+  "machinegun": {
+    "title": "Full Features",
+    "fullaccess": {
+      "name": "Full Access To Everyone",
+      "detail": "Do not pay expensive yearly payment to get full access, you always get the full access to our service."
+    },
+    "payfortransfer": {
+      "name": "Pay For Transfer",
+      "detail": "Best for individuals and small business owners, flexible for customers running big businesses."
+    },
+    "highavailability": {
+      "name": "High Avaiablility",
+      "detail": "Amazon Web Service on which our service is based, helps running our service 24/7."
+    },
+    "serversideformatting": {
+      "name": "Server Side Formatting",
+      "detail": "Standard formatting is done in server side, reducing client work load."
+    },
+    "fastsnapshot": {
+      "name": "Fast Snapshot",
+      "detail": "Some channels needs a initial state. We provide the special endpoint to get a snapshot in ~10sec."
+    },
+    "quickdataavailability": {
+      "name": "Quick Data Avaiablility",
+      "detail": "It takes 1-2 minutes for historical data to be available for query."
+    },
+    "formatteddata": {
+      "name": "Formatted Data",
+      "detail": "We provide formatted data for orderbook and trade channels."
+    },
+    "rawdata": {
+      "name": "Raw Data",
+      "detail": "We also provide raw WebSocket data native to exchanges including a partial support for a snapshot."
+    },
+    "libraries": {
+      "name": "Libraries",
+      "detail": "Easily incorporate Exchangedataset to an existing project by utilizing libraries."
+    }
+  },
+  "order": {
+    "title": "Order Your API-key",
+    "step": {
+      "1": {
+        "title": "Enter",
+        "detail": "Quota and email address"
+      },
+      "2": {
+        "title": "Payment",
+        "detail": "Enter credit card information"
+      },
+      "3": {
+        "title": "Checkout"
+      }
+    },
+    "suggestions": {
+      "tradedata": "Trade Data",
+      "recommended": "Recommended",
+      "enterprise": "ENTERPRISE",
+      "permonth": "/month",
+      "quota": "Quota",
+      "apicall": "API Call",
+      "access": "Access",
+      "unlimited": "Unlimited",
+      "choose": "Choose"
+    },
+    "choosequota": "Or, you can choose how much you need",
+    "gbplaceholder": "Enter transfer amount in GB",
+    "tabpane": {
+      "pricedetail": "Price Detail",
+      "permonth": "/month",
+      "transferestimate": "Transfer Estimate"
+    },
+    "email": {
+      "title": "Enter Your E-mail Address",
+      "detail": "We will send you a email to this address with a API-key and a password neccesary to login to our API Management Console.",
+      "placeholder": "Enter Your E-mail Address",
+      "proceed": "Proceed"
+    },
+    "paymentsuccess": {
+      "title": "Thank you!",
+      "detail": "Thank you for purchasing our product! We will send you a email with your auto-generated password after the payment is captured. This process usually only requires about a few seconds, but it might take more than 1 minute(s) depending on the processing of the payment. If you think it is taking too much time, please send an email to the support."
+    }
+  },
+  "footer": {
+    "servicelinks": {
+      "title": "Service Links",
+      "home": "Home",
+      "documentation": "Documentation",
+      "support": "Email"
+    },
+    "about": {
+      "title": "About Us",
+      "basedin": "Based in Japan"
+    }
+  }
+}

@@ -2,7 +2,6 @@
      User Global Variables
 *******************************/
 
-@headerFont: 'Cousine';
-@pageFont: 'Lato';
-@importGoogleFonts : false;
+@headerFont: 'Cousine', 'Kosugi';
+@pageFont: 'Lato', 'Kosugi';
 @fontSize: 1.3em;

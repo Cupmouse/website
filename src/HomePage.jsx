@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Divider } from 'semantic-ui-react';
+import { useTranslation } from 'react-i18next';
 
 import PlayGround from './PlayGround';
 import Statistics from './Statistics';
@@ -11,6 +12,8 @@ import Exchanges from './Exchanges';
 import Title from './Title';
 
 export default function HomePage() {
+  const { t } = useTranslation()
+  
   return (
     <div>
       <Title />
@@ -20,7 +23,7 @@ export default function HomePage() {
       <Exchanges style={{ padding: '2em 0' }} />
       <Supported style={{ padding: '2em 0' }} />
       <div style={{ padding: '2em 0' }}>
-        <Divider horizontal><Header size="huge" content="There is More" /></Divider>
+        <Divider horizontal><Header size="huge" content={t('machinegun.title')} /></Divider>
         <Machinegun />
       </div>
       <OrderForm style={{ padding: '2em 0 1vh 0' }} />

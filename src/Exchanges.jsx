@@ -1,76 +1,36 @@
 import React from 'react';
 import { Container, Grid, GridRow, GridColumn, Header, Label } from 'semantic-ui-react';
+import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as LogoBitmex } from './logos/bitmex.svg';
 import { ReactComponent as LogoBitfinex } from './logos/bitfinex.svg';
 import { ReactComponent as LogoBitflyer } from './logos/bitflyer.svg';
 
-const exchanges = [
-  {
-    logo: LogoBitmex,
-    channels: [
-      {
-        name: "Trade",
-        detail: "Market trade events",
-      },
-      {
-        name: "OrderbookL2",
-        detail: "Level-2 orderbook events",
-      },
-      {
-        name: "insurance",
-        detail: "Insurance change events",
-      },
-      {
-        name: "Liquidation",
-        detail: "Liquidation events",
-      },
-      {
-        name: "settlement",
-        detail: "Settlement events",
-      },
-    ]
-  },
-  {
-    logo: LogoBitfinex,
-    channels: [
-      {
-        name: "Trade",
-        detail: "Market trade events"
-      },
-      {
-        name: "OrderbookL2",
-        detail: "Level-2 orderbook events",
-      },
-    ]
-  },
-  {
-    logo: LogoBitflyer,
-    channels: [
-      {
-        name: "Trade",
-        detail: "Market trade/execution events"
-      },
-      {
-        name: "OrderbookL2 Difference",
-        detail: "Level-2 orderbook difference events",
-      },
-      {
-        name: "OrderbookL2 Snapshot",
-        detail: "Level-2 orderbook snapshot events",
-      },
-      {
-        name: "Ticker",
-        detail: "Highest detailed ticker available",
-      },
-    ]
-  }
-]
 
 export default function Exchanges(props) {
+  const { t } = useTranslation()
+
+  const exchanges = [
+    {
+      tname: "bitmex",
+      logo: LogoBitmex,
+      channels: ["trade", "orderbookl2", "insurance", "liquidation", "settlement"],
+    },
+    {
+      tname: "bitfinex",
+      logo: LogoBitfinex,
+      channels: ["trade", "book"],
+    },
+    {
+      tname: "bitflyer",
+      logo: LogoBitflyer,
+      channels: ["trade", "book", "booksnapshot", "ticker"],
+    }
+  ]
+
   return (
     <Container {...props} textAlign="center">
-      <Header size="large" content="Supported Exchanges" />
+      <Header size="large" content={t('exchanges.title')} />
       <Grid columns={2} stackable divided verticalAlign="middle">
         {exchanges.map((exc) => (
           <GridRow>
@@ -78,7 +38,14 @@ export default function Exchanges(props) {
               <exc.logo width="auto" height="2em" />
             </GridColumn>
             <GridColumn>
-              {exc.channels.map((ch) => <Label style={{margin: "0.2em"}} content={ch.name} detail={ch.detail} />)}
+              {
+                exc.channels.map((ch) =>
+                  <Label style={{margin: "0.2em"}}
+                    content={t(`exchanges.${exc.tname}.${ch}.name`)}
+                    detail={t(`exchanges.${exc.tname}.${ch}.detail`)}
+                  />
+                )
+              }
             </GridColumn>
           </GridRow>
         ))}

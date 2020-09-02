@@ -1,6 +1,8 @@
 import React from "react";
-import { Component } from "react";
 import { Menu, Container, Button, Icon, Responsive, Sidebar } from "semantic-ui-react";
+import { useTranslation } from "react-i18next";
+
+import { DOCUMENTATION_URL, APIKEY_CONSOLE_URL } from "./constants";
 import { ReactComponent as Logo } from "./logos/logo.svg";
 
 const getWidth = () => {
@@ -9,75 +11,69 @@ const getWidth = () => {
   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
 }
 
-class TopMenuMobile extends Component {
-  render() {
-    return (
-      <Responsive
-        as={Sidebar.Pushable}
-        getWidth={getWidth}
-        maxWidth={Responsive.onlyMobile.maxWidth}
+function TopMenuMobile(props) {
+  const { t } = useTranslation();
+
+  return (
+    <Responsive
+      as={Sidebar.Pushable}
+      getWidth={getWidth}
+      maxWidth={Responsive.onlyMobile.maxWidth}
+      {...props}
+    >
+      <Menu
+        borderless
+        pointing
+        secondary
+        size='large'
       >
-        <Menu
-          borderless
-          pointing
-          secondary
-          size='large'
-        >
-          <Container>
-            <Menu.Item>
-              <Logo width="200px" height="30px" />
-            </Menu.Item>
-            <Menu.Item position="right">
-              <Button as="a">
-                Contact Us
-              </Button>
-            </Menu.Item>
-          </Container>
-        </Menu>
-      </Responsive>
-    );
-  }
+        <Menu.Item>
+          <Logo width="200px" height="30px" />
+        </Menu.Item>
+        <Menu.Item position="right">
+          <Button as="a" content={t('topmenu.contact')} />
+        </Menu.Item>
+      </Menu>
+    </Responsive>
+  );
 }
 
-class TopMenuDesktop extends Component {
-  state = {
-    fixed: false,
-  };
+function TopMenuDesktop(props) {
+  const { t } = useTranslation()
 
-  render() {
-    return (
-      <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth} {...this.props}>
-        <Menu
-          borderless
-          pointing
-          secondary
-          size='large'
-        >
-          <Container>
-            <Menu.Item>
-              <Logo width="200px" height="30px" />
-            </Menu.Item>
-            <Menu.Item as="a" href="//docs.exchangedataset.cc/" target="_blank">
-              Documentation
-              {" "}
-              <Icon name="external" />
-            </Menu.Item>
-            <Menu.Item position="right">
-              <Button as="a" href="mailto://support@exchangedataset.cc/" content="Contact Us" />
-            </Menu.Item>
-          </Container>
-        </Menu>
-      </Responsive>
-    );
-  }
+  return (
+    <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth} {...props}>
+      <Menu
+        borderless
+        pointing
+        secondary
+        size='large'
+      >
+        <Container>
+          <Menu.Item>
+            <Logo width="200px" height="30px" />
+          </Menu.Item>
+          <Menu.Item as="a" href={DOCUMENTATION_URL} target="_blank">
+            {t('topmenu.documentation')}
+            {" "}
+            <Icon name="external" />
+          </Menu.Item>
+          <Menu.Item position="right">
+            <Button as="a" href={APIKEY_CONSOLE_URL} target="_blank">
+              {t('topmenu.login')}
+              <Icon name='right arrow' />
+            </Button>
+          </Menu.Item>
+        </Container>
+      </Menu>
+    </Responsive>
+  );
 }
-export default class TopMenu extends Component {
-  render() {
-    return (
-      <>
-        <TopMenuMobile />
-        <TopMenuDesktop />
-      </>
-    )
-  }
+export default function TopMenu() {
+  return (
+    <>
+      <TopMenuMobile />
+      <TopMenuDesktop />
+    </>
+  )
 };
