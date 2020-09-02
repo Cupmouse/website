@@ -31,6 +31,9 @@ export default function Exchanges(props) {
   return (
     <Container {...props} textAlign="center">
       <Header size="large" content={t('exchanges.title')} />
+      <Container fluid text textAlign="center">
+        {t('exchanges.detail')}
+      </Container>  
       <Grid columns={2} stackable divided verticalAlign="middle">
         {exchanges.map((exc) => (
           <GridRow>
