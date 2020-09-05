@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label, Grid, Container } from 'semantic-ui-react';
+import { Label, Grid } from 'semantic-ui-react';
 import { useTranslation } from 'react-i18next';
 
 export default function Title() {

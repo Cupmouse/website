@@ -105,8 +105,8 @@ class OrderForm extends React.Component {
           <Grid.Row stretched>
             {
               suggested.map((sugg) => (
-                <Grid.Column>
-                  <Segment key={sugg.quota} shadowed>
+                <Grid.Column key={sugg.quota}>
+                  <Segment>
                     <div style={{height: "3em"}}>
                       {
                         sugg.recommend ? <Label color={sugg.recommend.color} content={sugg.recommend.type} /> : ""

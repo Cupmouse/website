@@ -1,6 +1,4 @@
 import React from 'react';
-import { Header, Divider } from 'semantic-ui-react';
-import { useTranslation } from 'react-i18next';
 
 import PlayGround from './PlayGround';
 import Statistics from './Statistics';
@@ -13,8 +11,6 @@ import Title from './Title';
 import BriefDetail from './BriefDetail';
 
 export default function HomePage() {
-  const { t } = useTranslation()
-  
   return (
     <div>
       <Title />

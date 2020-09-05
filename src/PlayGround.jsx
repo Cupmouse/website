@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Placeholder, Grid, List, Header, Icon, Container } from 'semantic-ui-react';
+import { Placeholder, Grid, List, Header, Container } from 'semantic-ui-react';
 import Runkit from 'react-runkit';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';

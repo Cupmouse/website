@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Header, Icon } from 'semantic-ui-react';
+import { Grid, Header, Icon } from 'semantic-ui-react';
 import { useTranslation } from 'react-i18next';
 
 export default function Features(props) {

@@ -36,14 +36,14 @@ export default function Exchanges(props) {
       </Container>  
       <Grid columns={2} stackable divided verticalAlign="middle">
         {exchanges.map((exc) => (
-          <GridRow>
+          <GridRow key={exc.tname}>
             <GridColumn>
               <exc.logo width="auto" height="2em" />
             </GridColumn>
             <GridColumn>
               {
                 exc.channels.map((ch) =>
-                  <Label style={{margin: "0.2em"}}
+                  <Label key={ch} style={{margin: "0.2em"}}
                     content={t(`exchanges.${exc.tname}.${ch}.name`)}
                     detail={t(`exchanges.${exc.tname}.${ch}.detail`)}
                   />
