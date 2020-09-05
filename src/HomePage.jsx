@@ -10,6 +10,7 @@ import Machinegun from './Machinegun';
 import OrderForm from './OrderForm';
 import Exchanges from './Exchanges';
 import Title from './Title';
+import BriefDetail from './BriefDetail';
 
 export default function HomePage() {
   const { t } = useTranslation()
@@ -17,16 +18,14 @@ export default function HomePage() {
   return (
     <div>
       <Title />
+      <BriefDetail style={{ padding: "0 0 8em 0" }} />
       <Statistics style={{ padding: "6em 0" }} />
       <PlayGround style={{ padding: '6em 0' }} />
       <Features style={{ padding: '6em 0' }} />
       <Exchanges style={{ padding: '2em 0' }} />
       <Supported style={{ padding: '2em 0' }} />
-      <div style={{ padding: '2em 0' }}>
-        <Divider horizontal><Header size="huge" content={t('machinegun.title')} /></Divider>
-        <Machinegun />
-      </div>
-      <OrderForm style={{ padding: '2em 0 1vh 0' }} />
+      <Machinegun style={{ padding: '2em 0' }} />
+      <OrderForm style={{ padding: '2em 0 30vh 0' }} />
     </div>
   );
 };

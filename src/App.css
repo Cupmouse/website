@@ -39,18 +39,6 @@
   background: rgb(255, 240, 238);
 }
 
-.feature-befree {
-  height: 80vh;
-}
-
-.feature-nolimit {
-  height: 80vh;
-  background: rgb(211,255,177);
-  background: linear-gradient(135deg, rgba(211,255,177,1) 0%, rgba(206,228,255,1) 100%); 
-  
-}
-
-
 .feature-libraries {
   height: 80vh;
   background: rgb(218,156,255);

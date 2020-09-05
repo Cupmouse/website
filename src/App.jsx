@@ -13,18 +13,14 @@ const stripePromise = loadStripe(STRIPE_PUBLIC);
 ReactGA.initialize('UA-154580457-2');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <header>
-          <TopMenu />
-        </header>
-        <Elements stripe={stripePromise}>
-          <HomePage />
-        </Elements>
-        <AppFooter />
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div>
+      <TopMenu />
+      <Elements stripe={stripePromise}>
+        <HomePage />
+      </Elements>
+      <AppFooter />
+    </div>
+  );
 }

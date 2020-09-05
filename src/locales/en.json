@@ -5,7 +5,7 @@
   },
   "title": {
     "title": "Liberating access to historical data for everyone",
-    "description": "Reliable, highly detailed historical market data tailored for your need",
+    "description": "Reliable, highly detailed Bitcoin/cryptocurrency historical market data tailored for your need",
     "label": {
       "ticklevel": "Tick-level",
       "trade": "Executions",
@@ -13,6 +13,11 @@
       "libraries": "Libraries",
       "paybytransfer": "Pay-by-transfer"
     }
+  },
+  "briefdetail": {
+    "title": "Have you ever felt getting market data and formatting them is tedious and time-consuming?",
+    "1": "We thought these times are unnecessary if we could share the platform to record/store the historical data and format on need.",
+    "2": "Storing and formatting Big Data for multiple exchanges is no longer needed. Instead, you can use the time for the real work you need to do."
   },
   "stats": {
     "accumulated": {
@@ -22,7 +27,7 @@
       "label": "lowest per month"
     },
     "exchanges": {
-      "label": "Exchanges"
+      "label": "exchanges supported"
     }
   },
   "demo": {

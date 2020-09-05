@@ -71,9 +71,9 @@ function TopMenuDesktop(props) {
 }
 export default function TopMenu() {
   return (
-    <>
+    <header>
       <TopMenuMobile />
       <TopMenuDesktop />
-    </>
+    </header>
   )
 };
