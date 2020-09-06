@@ -2,8 +2,8 @@ import React from 'react';
 import { Container, GridRow, GridColumn, Grid, Header } from 'semantic-ui-react';
 import { useTranslation } from 'react-i18next';
 
-import { ReactComponent as LogoNodeJS } from './logos/nodejs.svg';
-import { ReactComponent as LogoPython } from './logos/python.svg';
+import { ReactComponent as LogoNodeJS } from '../logos/nodejs.svg';
+import { ReactComponent as LogoPython } from '../logos/python.svg';
 
 export default function Supported(props) {
   const { t } = useTranslation()

@@ -2,11 +2,13 @@ import React from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import ReactGA from 'react-ga';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import { STRIPE_PUBLIC, PRICE_URL } from './constants';
 import AppFooter from './AppFooter';
 import TopMenu from './TopMenu';
-import HomePage from './HomePage';
-import { STRIPE_PUBLIC } from './constants';
+import HomePage from './home/HomePage';
+import Pricing from './pricing/Pricing';
 
 const stripePromise = loadStripe(STRIPE_PUBLIC);
 
@@ -15,12 +17,19 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
 export default function App() {
   return (
-    <div>
+    <BrowserRouter>
       <TopMenu />
-      <Elements stripe={stripePromise}>
-        <HomePage />
-      </Elements>
+      <Switch>
+        <Route path="/">
+          <HomePage />
+        </Route>
+        <Route path={PRICE_URL}>
+          <Elements stripe={stripePromise}>
+            <Pricing />
+          </Elements>
+        </Route>
+      </Switch>
       <AppFooter />
-    </div>
+    </BrowserRouter>
   );
 }

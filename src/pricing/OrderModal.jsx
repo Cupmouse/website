@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { CardElement } from '@stripe/react-stripe-js';
-import { ORDER_URL, calcPrice } from './constants';
+import { ORDER_URL, calcPrice } from '../constants';
 import { Modal, Message, Segment, Button } from 'semantic-ui-react';
 
 export default class OrderModal extends Component {

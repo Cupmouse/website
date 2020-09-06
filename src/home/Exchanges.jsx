@@ -2,9 +2,9 @@ import React from 'react';
 import { Container, Grid, GridRow, GridColumn, Header, Label } from 'semantic-ui-react';
 import { useTranslation } from 'react-i18next';
 
-import { ReactComponent as LogoBitmex } from './logos/bitmex.svg';
-import { ReactComponent as LogoBitfinex } from './logos/bitfinex.svg';
-import { ReactComponent as LogoBitflyer } from './logos/bitflyer.svg';
+import { ReactComponent as LogoBitmex } from '../logos/bitmex.svg';
+import { ReactComponent as LogoBitfinex } from '../logos/bitfinex.svg';
+import { ReactComponent as LogoBitflyer } from '../logos/bitflyer.svg';
 
 
 export default function Exchanges(props) {

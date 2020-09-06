@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Header, Grid } from 'semantic-ui-react';
 import { useTranslation } from 'react-i18next';
 
-import { ReactComponent as MeltingClock } from "./resources/melting_clock_min.svg";
+import { ReactComponent as MeltingClock } from "../resources/melting_clock_min.svg";
 
 export default function BriefDetail(props) {
   const { t } = useTranslation();

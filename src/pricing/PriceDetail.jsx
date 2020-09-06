@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from 'prop-types'
 import { Table } from "semantic-ui-react"
-import { calcPrice, PRICING } from "./constants";
+import { calcPrice, PRICING } from "../constants";
 
 export default function PriceDetail(props) {
   const { quota } = props;

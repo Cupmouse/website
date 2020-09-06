@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, Container, Button, Icon, Responsive, Sidebar } from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
 
-import { DOCUMENTATION_URL, APIKEY_CONSOLE_URL } from "./constants";
+import { DOCUMENTATION_URL, APIKEY_CONSOLE_URL, PRICE_URL } from "./constants";
 import { ReactComponent as Logo } from "./logos/logo.svg";
 
 const getWidth = () => {
@@ -30,6 +30,7 @@ function TopMenuMobile(props) {
         <Menu.Item>
           <Logo width="200px" height="30px" />
         </Menu.Item>
+          <Menu.Item as="a" href={PRICE_URL} content={t('topmenu.price')} />
         <Menu.Item position="right">
           <Button as="a" content={t('topmenu.contact')} />
         </Menu.Item>
@@ -53,6 +54,7 @@ function TopMenuDesktop(props) {
           <Menu.Item>
             <Logo width="200px" height="30px" />
           </Menu.Item>
+          <Menu.Item as="a" href={PRICE_URL} content={t('topmenu.price')} />
           <Menu.Item as="a" href={DOCUMENTATION_URL} target="_blank">
             {t('topmenu.documentation')}
             {" "}
