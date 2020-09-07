@@ -1,10 +1,6 @@
 import { ORDER_URL } from "./constants";
 
 export const purchase = async (stripe, cardElement, email, quota) => {
-  this.setState({
-    loading: true,
-  });
-
   // request the begin of payment
   const response = await window.fetch(ORDER_URL, {
     method: 'POST',

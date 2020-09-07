@@ -55,6 +55,7 @@ export default function OrderSegment({ quota }) {
         onPurchaseFailed("Failed, but details are unknown")
       }
     }).catch((err) => {
+      console.log(err);
       onPurchaseFailed(err.toString());
     });
   };
@@ -74,22 +75,27 @@ export default function OrderSegment({ quota }) {
         purchaseCompleted={purchaseComplete}
       />
       <Segment attached padded loading={purchaseOnGoing}>
-        <OrderForm
-          quota={quota}
-          email={email}
-          setEmail={setEmail}
-          setCreditOK={setCreditOK}
-          canProceed={canProceed}
-          openConfirmModal={() => setConfirmModalOpen(true)}
-          error={error}
-        />
-        <Message
-          positive
-          icon="checkmark"
-          header={t('order.paymentsuccess.title')}
-          content={t('order.paymentsuccess.detail')}
-          hidden={!purchaseComplete}
-        />
+        {
+          purchaseComplete ? (
+            <Message
+              positive
+              icon="checkmark"
+              header={t('order.paymentsuccess.title')}
+              content={t('order.paymentsuccess.detail')}
+              hidden={!purchaseComplete}
+            />
+          ) : (
+              <OrderForm
+                quota={quota}
+                email={email}
+                setEmail={setEmail}
+                setCreditOK={setCreditOK}
+                canProceed={canProceed}
+                openConfirmModal={() => setConfirmModalOpen(true)}
+                error={error}
+              />
+            )
+        }
         <ConfirmModal
           priceStr={priceStr}
           open={confirmModalOpen}
