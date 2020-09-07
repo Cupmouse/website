@@ -4,9 +4,11 @@ import { useTranslation } from 'react-i18next';
 
 import QuotaDetail from './QuotaDetail';
 import PriceDetail from './PriceDetail';
+import { calcPrice } from '../constants';
 
-export default function DetailTabs() {
+export default function DetailTabs({ quota }) {
   const { t } = useTranslation();
+  const price = calcPrice(quota).reduce((p, c) => p + c);
 
   const tabPanes = [
     {

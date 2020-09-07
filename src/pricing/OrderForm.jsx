@@ -1,13 +1,11 @@
 import React from 'react';
-import { Message, Header, Button, Input, Modal, Container, Tab } from 'semantic-ui-react';
+import { Message, Header, Button, Input, Modal, Container } from 'semantic-ui-react';
 import { ElementsConsumer } from '@stripe/react-stripe-js';
 import ReactGA from 'react-ga';
 import { withTranslation } from 'react-i18next';
 
 import { NUMBER_REGEX, EMAIL_REGEX, calcPrice } from '../constants';
 import OrderModal from './OrderModal';
-import PriceDetail from './PriceDetail';
-import QuotaDetail from './QuotaDetail';
 
 class OrderForm extends React.Component {
   state = {

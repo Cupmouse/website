@@ -36,7 +36,7 @@ const suggested = [
   },
 ];
 
-export default function Suggested(props) {
+export default function Suggested({ quotaSetter, ...props }) {
   const { t } = useTranslation();
 
   return (
@@ -48,7 +48,10 @@ export default function Suggested(props) {
               <Segment>
                 <div style={{ height: "3em" }}>
                   {
-                    sugg.recommend ? <Label color={sugg.recommend.color} content={t(`price.suggestions.${sugg.recommend.type}`)} /> : ""
+                    sugg.recommend ? <Label
+                      color={sugg.recommend.color}
+                      content={t(`price.suggestions.${sugg.recommend.type}`)}
+                    /> : ""
                   }
                 </div>
                 <p><span style={{ fontSize: "2em" }}>${calcPrice(sugg.quota).reduce((p, c) => p + c)}</span>{t('price.suggestions.permonth')}</p>
@@ -58,7 +61,11 @@ export default function Suggested(props) {
                 <p style={{ fontSize: "2em" }}>{t('price.suggestions.unlimited')}</p>
                 <span>{t('price.suggestions.access')}</span>
                 <p style={{ fontSize: "2em" }}>{t('price.suggestions.unlimited')}</p>
-                <Button primary content={t('price.suggestions.choose')} onClick={() => this.setState({ quotaStr: sugg.quota.toString() })} />
+                <Button
+                  primary
+                  content={t('price.suggestions.choose')}
+                  onClick={() => quotaSetter(sugg.quota)}
+                />
               </Segment>
             </Grid.Column>
           ))
