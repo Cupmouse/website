@@ -20,10 +20,10 @@ export default function App() {
     <BrowserRouter>
       <TopMenu />
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <HomePage />
         </Route>
-        <Route path={PRICE_URL}>
+        <Route exact path={PRICE_URL}>
           <Elements stripe={stripePromise}>
             <Pricing />
           </Elements>

@@ -2,8 +2,9 @@ import React from "react";
 import { Menu, Container, Button, Icon, Responsive, Sidebar } from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
 
-import { DOCUMENTATION_URL, APIKEY_CONSOLE_URL, PRICE_URL } from "./constants";
+import { DOCUMENTATION_URL, APIKEY_CONSOLE_URL, PRICE_URL, HOME_URL } from "./constants";
 import { ReactComponent as Logo } from "./logos/logo.svg";
+import { Link } from "react-router-dom";
 
 const getWidth = () => {
   const isSSR = typeof window === 'undefined'
@@ -30,7 +31,8 @@ function TopMenuMobile(props) {
         <Menu.Item>
           <Logo width="200px" height="30px" />
         </Menu.Item>
-          <Menu.Item as="a" href={PRICE_URL} content={t('topmenu.price')} />
+        <Menu.Item as={Link} to={HOME_URL} content={t('topmenu.home')} />
+        <Menu.Item as={Link} to={PRICE_URL} content={t('topmenu.price')} />
         <Menu.Item position="right">
           <Button as="a" content={t('topmenu.contact')} />
         </Menu.Item>
@@ -54,8 +56,9 @@ function TopMenuDesktop(props) {
           <Menu.Item>
             <Logo width="200px" height="30px" />
           </Menu.Item>
-          <Menu.Item as="a" href={PRICE_URL} content={t('topmenu.price')} />
-          <Menu.Item as="a" href={DOCUMENTATION_URL} target="_blank">
+          <Menu.Item as={Link} to={HOME_URL} content={t('topmenu.home')} />
+          <Menu.Item as={Link} to={PRICE_URL} content={t('topmenu.price')} />
+          <Menu.Item as={Link} href={DOCUMENTATION_URL} target="_blank">
             {t('topmenu.documentation')}
             {" "}
             <Icon name="external" />

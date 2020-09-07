@@ -5,6 +5,7 @@ export const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*
 export const APIKEY_CONSOLE_URL = 'https://console.exchangedataset.cc/';
 export const SUPPORT_EMAIL = "mailto://support@exchangedataset.cc/";
 export const DOCUMENTATION_URL = "https://docs.exchangedataset.cc/";
+export const HOME_URL = "/";
 export const PRICE_URL = "/price";
 export const PRICING = [
   {
