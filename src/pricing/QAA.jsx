@@ -42,39 +42,41 @@ export default function () {
   ];
 
   const handleClick = (_, { index }) => {
-    console.log(index)
     const newIndex = activeIndex === index ? -1 : index;
     setActiveIndex(newIndex);
   };
 
+  const accordions = [];
+
+  for (let i = 0; i < panels.length; i++) {
+    const e = panels[i];
+    accordions.push((
+      <Accordion.Title
+        key={`${e.key}-title`}
+        index={i}
+        active={activeIndex === i}
+        onClick={handleClick}
+        content={t(`faq.${e.key}.title`)}
+      />
+    ));
+    accordions.push((
+      <Accordion.Content
+        key={`${e.key}-content`}
+        active={activeIndex === i}
+        content={e.content}
+      />
+    ));
+  }
+
   return (
-    <>
-      <Accordion
-        exclusive={false}
-        fluid
-      >
-        {
-          panels.map((e, i) => (
-            <>
-              <Accordion.Title
-                key={`${e.key}-title`}
-                index={i}
-                active={activeIndex === i}
-                onClick={handleClick}
-                content={t(`faq.${e.key}.title`)}
-              />
-              <Accordion.Content
-                key={`${e.key}-content`}
-                active={activeIndex === i}
-                content={e.content}
-              />
-            </>
-          ))
-        }
-        <Accordion.Title>
-          <a href={FAQ_URL} rel="noopener noreferrer" target="_blank">{t('faq.more')}</a>
-        </Accordion.Title>
-      </Accordion>
-    </>
+    <Accordion
+      exclusive={false}
+      fluid
+    >
+      {accordions}
+      <Accordion.Title>
+        <a href={FAQ_URL} rel="noopener noreferrer" target="_blank">{t('faq.more')}</a>
+      </Accordion.Title>
+    </Accordion>
   );
 }

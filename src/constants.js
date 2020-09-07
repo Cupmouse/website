@@ -31,8 +31,9 @@ export const PRICING = [
     price: 0.3,
   },
 ];
+export const PRICING_MAX_PREC = 2;
 
-export const calcPrice = (quota) => {
+export const calcPriceDetail = (quota) => {
   let prices = [Math.min(quota, PRICING[0].end) * PRICING[0].price];
   quota = Math.max(quota - PRICING[0].end, 0);
   for (let i = 1; i < PRICING.length; i++) {
@@ -42,3 +43,5 @@ export const calcPrice = (quota) => {
   }
   return prices;
 }
+
+export const calcPrice = (quota) => calcPriceDetail(quota).reduce((a, b) => a + b);

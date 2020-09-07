@@ -54,7 +54,7 @@ export default function Suggested({ quotaSetter, ...props }) {
                     /> : ""
                   }
                 </div>
-                <p><span style={{ fontSize: "2em" }}>${calcPrice(sugg.quota).reduce((p, c) => p + c)}</span>{t('price.suggestions.permonth')}</p>
+                <p><span style={{ fontSize: "2em" }}>${calcPrice(sugg.quota)}</span>{t('price.suggestions.permonth')}</p>
                 <span>{t('price.suggestions.quota')}</span>
                 <p style={{ fontSize: "2em" }}>{sugg.quota} GB</p>
                 <span>{t('price.suggestions.apicall')}</span>

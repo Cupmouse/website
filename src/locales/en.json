@@ -186,6 +186,7 @@
     },
     "pickquota": {
       "title": "Or, you can choose how much you need",
+      "detail": "Type in how much quota you need in GB. We recommend you to have a little margin.",
       "placeholder": "Enter transfer amount in GB"
     }
   },

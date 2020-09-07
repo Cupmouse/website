@@ -1,95 +1,73 @@
-import React from 'react';
-import { Message, Header, Button, Input, Modal, Container } from 'semantic-ui-react';
-import { ElementsConsumer } from '@stripe/react-stripe-js';
-import ReactGA from 'react-ga';
-import { withTranslation } from 'react-i18next';
+import React, { useState } from 'react';
+import { Message, Form, Segment } from 'semantic-ui-react';
+import { CardElement } from '@stripe/react-stripe-js';
+import { useTranslation } from 'react-i18next';
 
-import { NUMBER_REGEX, EMAIL_REGEX, calcPrice } from '../constants';
-import OrderModal from './OrderModal';
+import { calcPrice, AGREEMENT_URL, EMAIL_REGEX, PRICING_MAX_PREC } from '../constants';
 
-class OrderForm extends React.Component {
-  state = {
-    quotaStr: '1',
-    email: '',
-    modalOpen: false,
-    successOpen: false,
-  }
+export default function OrderForm({ quota, email, setEmail, setCreditOK, canProceed, openConfirmModal, error }) {
+  const [cardError, setCardError] = useState(false);
+  const [termsChecked, setTermsChecked] = useState(false);
+  const { t } = useTranslation();
 
-  render() {
-    const { quotaStr, email, modalOpen, successOpen } = this.state;
-    const isNumber = NUMBER_REGEX.test(quotaStr);
-    const quota = Number.isNaN(+quotaStr) ? 0 : +quotaStr;
-    const price = isNumber ? calcPrice(quota).reduce((p, c) => p + c) : 0;
-    const isEmail = EMAIL_REGEX.test(email);
+  const handleTermChange = (_, { checked }) => setTermsChecked(checked);
+  const handleChange = (_, { value }) => setEmail(value);
 
-    const { t } = this.props
+  const emailOK = EMAIL_REGEX.test(email);
+  canProceed = canProceed && termsChecked;
+  const price = calcPrice(quota);
 
-    return (
-      <Container {...this.props} textAlign="center">
-        <Header size="large" content={t('order.email.title')} />
-        <p>{t('order.email.detail')}</p>
-        <Input
-          size="large"
-          type="email"
-          placeholder={t('order.email.placeholder')}
-          value={email}
-          action={(
-            <Button
-              primary
-              icon='cart'
-              size="large"
-              content={t('order.email.proceed')}
-              disabled={!isNumber || !isEmail}
-              onClick={() => this.setState({ modalOpen: true })}
-            />
-          )}
-          onChange={(event, target) => {
-            this.setState({
-              email: target.value,
-            });
-          }}
-        />
-        <ElementsConsumer>
-          {({ stripe, elements }) => (
-            <OrderModal
-              stripe={stripe}
-              elements={elements}
-              email={email}
-              quota={quota}
-              modalOpen={modalOpen}
-              onCancel={() => this.setState({ modalOpen: false })}
-              onComplete={() => {
-                this.setState({
-                  modalOpen: false,
-                  successOpen: true,
-                });
-                ReactGA.event({
-                  category: "purchase",
-                  action: "purchase",
-                  label: "purchase",
-                  value: price,
-                });
-              }
-              }
-            />
-          )}
-        </ElementsConsumer>
-        <Modal open={successOpen}>
-          <Modal.Header content={t('order.paymentsuccess.title')} />
-          <Modal.Content>
-            <Message
-              positive
-              icon="checkmark"
-              content={t('order.paymentsuccess.detail')}
-            />
-          </Modal.Content>
-          <Modal.Actions>
-            <Button content="OK" onClick={() => this.setState({ successOpen: false })} />
-          </Modal.Actions>
-        </Modal>
-      </Container>
-    );
-  }
+  return (
+    <Form error={error !== null}>
+      <Form.Group widths="equal">
+        <Form.Field>
+          <label>Total</label>
+          <p>${price.toFixed(PRICING_MAX_PREC)}</p>
+        </Form.Field>
+        <Form.Field>
+          <label>Quota</label>
+          <p>{quota}GB</p>
+        </Form.Field>
+      </Form.Group>
+      <Form.Input
+        label="Email Address"
+        type="email"
+        placeholder={t('order.email.placeholder')}
+        error={!emailOK}
+        value={email}
+        onChange={handleChange}
+      />
+      <p>{t('order.email.detail')}</p>
+      <Form.Field error={cardError}>
+        <label>Credit Card Information</label>
+        <Segment>
+          <CardElement
+            onChange={(e) => {
+              setCardError(!!e.error);
+              setCreditOK(e.complete);
+            }}
+          />
+        </Segment>
+      </Form.Field>
+      <Form.Field>
+        <label>Terms of Services</label>
+        <p>Please read our <a href={AGREEMENT_URL}>Terms of Services</a> before the purchase.</p>
+        <Form.Checkbox label="I have read and agree to the Terms of Services." checked={termsChecked} onChange={handleTermChange} />
+      </Form.Field>
+      <Message
+        error
+        icon="cogs"
+        header="The purchase has not been completed"
+        content={error}
+      />
+      <Form.Button
+        primary
+        icon='cart'
+        size="large"
+        content={t('order.email.proceed')}
+        disabled={!canProceed}
+        onClick={openConfirmModal}
+      />
+    </Form>
+  );
 }
-
-export default withTranslation()(OrderForm);

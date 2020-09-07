@@ -1,11 +1,11 @@
 import React from "react"
 import PropTypes from 'prop-types'
 import { Table } from "semantic-ui-react"
-import { calcPrice, PRICING } from "../constants";
+import { PRICING, calcPriceDetail, PRICING_MAX_PREC } from "../constants";
 
 export default function PriceDetail(props) {
   const { quota } = props;
-  const prices = calcPrice(quota);
+  const prices = calcPriceDetail(quota);
 
   return (
     <Table celled>
@@ -27,7 +27,7 @@ export default function PriceDetail(props) {
             } else {
               name = `${PRICING[classIndex - 1].end + 1}GB to ${PRICING[classIndex].end}GB`;
             }
-            const classPrice = PRICING[classIndex].price;
+            const classPrice = PRICING[classIndex].price.toFixed(PRICING_MAX_PREC);
 
             return (
               <Table.Row key={name}>
