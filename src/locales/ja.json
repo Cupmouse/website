@@ -171,6 +171,38 @@
       "detail": "ライブラリを利用することで、プロジェクトに簡単に統合できます。"
     }
   },
+  "price": {
+    "detail": {
+      "title": "API-key, Ticket, and Quota",
+      "1": "\"Ticket\" is similar to a prepaid card. It has a \"Quota\" and expiry date. A Ticket is attached to an API-key, which is used for authenticating customers in HTTP Endpoint. A Ticket can not move across API-keys once purchased.",
+      "quota": {
+        "title": "Quota",
+        "1": "Every transfer from HTTP Endpoint consumes quota by its size in bytes. If the response is compressed, the size of the uncompressed data is used. Consumption per call never goes below 1024 (1kb) to prevent malicious use.",
+        "2": "Exceptionally, Snapshot Endpoint, which is used to fetch the initial state of the channel, also consumes quota by how much data it had scanned, along with transfer consumption. This Endpoint is called only once per continuous data (a request from libraries), so it is negligible for the majority of customers.",
+        "3": "On access using an API-key, Tickets attached to it with the closest expiry date is used in priority."
+      },
+      "apikeyticket": {
+        "title": "API-key and Ticket",
+        "1": "New customers will receive a pair of API-key and Ticket. All Tickets will expire in 30 days (a month) including the day of purchase."
+      }
+    },
+    "suggestions": {
+      "title": "おすすめのプラン",
+      "tradedata": "取引データ向け",
+      "recommended": "おすすめ",
+      "enterprise": "大規模事業者様向け",
+      "permonth": "/月",
+      "quota": "クオータ",
+      "apicall": "APIコール",
+      "access": "データアクセス",
+      "unlimited": "無制限",
+      "choose": "選択"
+    },
+    "pickquota": {
+      "title": "もしくは、必要なクオータをお客様が指定できます",
+      "placeholder": "必要なクオータをGB単位で指定"
+    }
+  },
   "order": {
     "title": "APIキーの購入",
     "step": {
@@ -186,19 +218,6 @@
         "title": "購入完了"
       }
     },
-    "suggestions": {
-      "tradedata": "取引データ",
-      "recommended": "おすすめ",
-      "enterprise": "エンタープライズ",
-      "permonth": "/月",
-      "quota": "クオータ",
-      "apicall": "APIコール",
-      "access": "データアクセス",
-      "unlimited": "無制限",
-      "choose": "選択"
-    },
-    "choosequota": "もしくは、必要なクオータをお客様が指定できます",
-    "gbplaceholder": "必要なクオータをGB単位で指定",
     "tabpane": {
       "pricedetail": "内訳",
       "permonth": "/月",

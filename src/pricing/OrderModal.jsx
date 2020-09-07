@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { CardElement } from '@stripe/react-stripe-js';
-import { ORDER_URL, calcPrice } from '../constants';
 import { Modal, Message, Segment, Button } from 'semantic-ui-react';
+import { CardElement } from '@stripe/react-stripe-js';
+
+import { ORDER_URL, calcPrice, AGREEMENT_URL } from '../constants';
 
 export default class OrderModal extends Component {
   state = {
@@ -89,6 +90,7 @@ export default class OrderModal extends Component {
           <p>To complete the purchase, enter your credit card number below and click the button "Confirm Payment".</p>
           <p style={{ fontWeight: 'bold' }}>Payment procedure will immidiately start and can not be cancelled.</p>
           <p>Please note that we don't accept any cancels or refunds.</p>
+          <p>Please read our <a href={AGREEMENT_URL}>Terms and Services</a> before the purchase.</p>
           <Segment>
             <CardElement />
           </Segment>
