@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { DOCUMENTATION_URL, APIKEY_CONSOLE_URL, PRICE_URL, HOME_URL } from "./constants";
 import { ReactComponent as Logo } from "./logos/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const getWidth = () => {
   const isSSR = typeof window === 'undefined'
@@ -24,17 +24,16 @@ function TopMenuMobile(props) {
     >
       <Menu
         borderless
-        pointing
-        secondary
         size='large'
       >
         <Menu.Item>
-          <Logo width="200px" height="30px" />
+          <Link to={HOME_URL}>
+            <Logo id="toplogo" />
+          </Link>
         </Menu.Item>
-        <Menu.Item as={Link} to={HOME_URL} content={t('topmenu.home')} />
-        <Menu.Item as={Link} to={PRICE_URL} content={t('topmenu.price')} />
+        <Menu.Item as={NavLink} exact to={PRICE_URL} content={t('topmenu.price')} />
         <Menu.Item position="right">
-          <Button as="a" content={t('topmenu.contact')} />
+          <Button as="a" href={APIKEY_CONSOLE_URL} content={t('topmenu.login')} />
         </Menu.Item>
       </Menu>
     </Responsive>
@@ -48,22 +47,18 @@ function TopMenuDesktop(props) {
     <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth} {...props}>
       <Menu
         borderless
-        pointing
-        secondary
-        size='large'
+        fixed="top"
       >
         <Container>
           <Menu.Item>
-            <Logo width="200px" height="30px" />
+            <Link to={HOME_URL}>
+              <Logo id="toplogo" />
+            </Link>
           </Menu.Item>
-          <Menu.Item as={Link} to={HOME_URL} content={t('topmenu.home')} />
-          <Menu.Item as={Link} to={PRICE_URL} content={t('topmenu.price')} />
-          <Menu.Item as={Link} href={DOCUMENTATION_URL} target="_blank">
-            {t('topmenu.documentation')}
-            {" "}
-            <Icon name="external" />
-          </Menu.Item>
-          <Menu.Item position="right">
+          <Menu.Item as={NavLink} exact position="right" to={HOME_URL} content={t('topmenu.home')} />
+          <Menu.Item as={NavLink} exact to={PRICE_URL} content={t('topmenu.price')} />
+          <Menu.Item as="a" href={DOCUMENTATION_URL} target="_blank" content={t('topmenu.documentation')} />
+          <Menu.Item>
             <Button as="a" href={APIKEY_CONSOLE_URL} target="_blank">
               {t('topmenu.login')}
               <Icon name='right arrow' />
@@ -71,6 +66,7 @@ function TopMenuDesktop(props) {
           </Menu.Item>
         </Container>
       </Menu>
+      <div className="topmenu-spacer"></div>
     </Responsive>
   );
 }

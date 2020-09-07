@@ -2,6 +2,15 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin);
 @import url(https://fonts.googleapis.com/css?family=Kosugi:400,700);
 
+#toplogo {
+  height: 30px;
+  width: auto;
+}
+
+.topmenu-spacer {
+  height: 70px;
+}
+
 .title-box {
   height: 20em;
 }

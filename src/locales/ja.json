@@ -1,5 +1,7 @@
 {
   "topmenu": {
+    "home": "トップページ",
+    "price": "価格",
     "documentation": "ドキュメンテーション",
     "login": "ログイン"
   },

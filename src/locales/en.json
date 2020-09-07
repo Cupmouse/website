@@ -1,5 +1,7 @@
 {
   "topmenu": {
+    "home": "Home",
+    "price": "Price",
     "documentation": "Documentation",
     "login": "Login"
   },
