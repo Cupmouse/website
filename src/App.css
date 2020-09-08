@@ -82,3 +82,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+#contactus {
+  background-color: rgb(221, 221, 221);
+}
+
+.gray-background {
+  background-color: rgb(245, 245, 245);
+}

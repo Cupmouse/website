@@ -18,8 +18,10 @@ export default function Pricing() {
         <Header size="huge" content={t('price.suggestions.title')} />
         <Suggested quotaSetter={setQuota} />
       </Container>
-      <Container text style={{ padding: "2em 0" }}>
-        <QAA />
+      <Container fluid className="gray-background" style={{ padding: "2em 0" }}>
+        <Container text>
+          <QAA />
+        </Container>
       </Container>
       <Container textAlign="center" style={{ padding: "2em 0 3em 0" }}>
         <Header size="large" content={t('price.pickquota.title')} />

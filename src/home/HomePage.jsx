@@ -39,7 +39,7 @@ export default function HomePage() {
         </Container>
       </Container>
 
-      <Container id="futures" fluid style={{ padding: '6em 0' }} >
+      <Container id="features" fluid style={{ padding: '6em 0' }} >
         <Container>
           <Features />
         </Container>
@@ -70,8 +70,10 @@ export default function HomePage() {
         </Container>
       </Container>
 
-      <Container id="contactus" text style={{ padding: '20vh 0 20vh 0' }} >
-        <Contact />
+      <Container id="contactus" fluid style={{ padding: '20vh 0 20vh 0' }} >
+        <Container text>
+          <Contact />
+        </Container>
       </Container>
     </>
   );
