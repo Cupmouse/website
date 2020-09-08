@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Table, Icon } from "semantic-ui-react";
+import { useTranslation } from "react-i18next";
 
 const dataSizes = [
   {
@@ -41,14 +42,16 @@ const dataSizes = [
 ]
 
 export default function QuotaDetail(props) {
+  const { t } = useTranslation();
+  
   return (
     <div>
       <Table>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Exchange</Table.HeaderCell>
-            <Table.HeaderCell>Channel</Table.HeaderCell>
-            <Table.HeaderCell>Estimated days of formatted data you can fetch*</Table.HeaderCell>
+            <Table.HeaderCell>{t('transferestimate.exchange')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('transferestimate.channel')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('transferestimate.estimated')}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -61,7 +64,7 @@ export default function QuotaDetail(props) {
                   <Table.Cell>{exa.channel}</Table.Cell>
                   <Table.Cell warning={days < 36} positive={days >= 36}>
                     {days >= 36 ? <Icon name="check" /> : ""}
-                    {days.toFixed(2)} days**
+                    {t('transferestimate.days', { days: days.toFixed(2) })}
                   </Table.Cell>
                 </Table.Row>
               );
@@ -69,8 +72,8 @@ export default function QuotaDetail(props) {
           }
         </Table.Body>
       </Table>
-      <p style={{ textAlign: 'right' }}>*This is a estimate based on the size of sample datasets. The actual figure may vary.</p>
-      <p style={{ textAlign: 'right' }}>**If you used all quota on this single channel by fetching data from the filter endpoint with "json" format.</p>
+      <p style={{ textAlign: 'right' }}>{t('transferestimate.1')}</p>
+      <p style={{ textAlign: 'right' }}>{t('transferestimate.2')}</p>
     </div>
   )
 }

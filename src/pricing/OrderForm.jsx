@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Message, Form, Segment } from 'semantic-ui-react';
 import { CardElement } from '@stripe/react-stripe-js';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 
 import { calcPrice, AGREEMENT_URL, EMAIL_REGEX, PRICING_MAX_PREC } from '../constants';
 
@@ -21,16 +21,16 @@ export default function OrderForm({ quota, email, setEmail, setCreditOK, canProc
     <Form error={error !== null}>
       <Form.Group widths="equal">
         <Form.Field>
-          <label>Total</label>
+          <label>{t('order.total')}</label>
           <p>${price.toFixed(PRICING_MAX_PREC)}</p>
         </Form.Field>
         <Form.Field>
-          <label>Quota</label>
+          <label>{t('order.quota')}</label>
           <p>{quota}GB</p>
         </Form.Field>
       </Form.Group>
       <Form.Input
-        label="Email Address"
+        label={t('order.email.label')}
         type="email"
         placeholder={t('order.email.placeholder')}
         error={!emailOK}
@@ -39,7 +39,7 @@ export default function OrderForm({ quota, email, setEmail, setCreditOK, canProc
       />
       <p>{t('order.email.detail')}</p>
       <Form.Field error={cardError}>
-        <label>Credit Card Information</label>
+        <label>{t('order.credit.title')}</label>
         <Segment>
           <CardElement
             onChange={(e) => {
@@ -50,21 +50,21 @@ export default function OrderForm({ quota, email, setEmail, setCreditOK, canProc
         </Segment>
       </Form.Field>
       <Form.Field>
-        <label>Terms of Services</label>
-        <p>Please read our <a href={AGREEMENT_URL}>Terms of Services</a> before the purchase.</p>
-        <Form.Checkbox label="I have read and agree to the Terms of Services." checked={termsChecked} onChange={handleTermChange} />
+        <label>{t('order.terms.title')}</label>
+        <p><Trans i18nKey="order.terms.detail">pre<a href={AGREEMENT_URL}>inner</a>after</Trans></p>
+        <Form.Checkbox label={t('order.terms.label')} checked={termsChecked} onChange={handleTermChange} />
       </Form.Field>
       <Message
         error
         icon="cogs"
-        header="The purchase has not been completed"
+        header={t('order.error.title')}
         content={error}
       />
       <Form.Button
         primary
         icon='cart'
         size="large"
-        content={t('order.email.proceed')}
+        content={t('order.proceed')}
         disabled={!canProceed}
         onClick={openConfirmModal}
       />

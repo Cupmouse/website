@@ -188,7 +188,31 @@
       "title": "Or, you can choose how much you need",
       "detail": "Type in how much quota you need in GB. We recommend you to have a little margin.",
       "placeholder": "Enter transfer amount in GB"
+    },
+    "tabpane": {
+      "pricedetail": "Price Detail",
+      "transferestimate": "Transfer Estimate"
     }
+  },
+  "pricedetail": {
+    "title": "Price Detail",
+    "permonth": "/month",
+    "class": "Class",
+    "pricepergb": "Price/GB",
+    "applied": "Applied",
+    "first": "First {{start}}GB",
+    "to": "{{start}}GB to {{end}}GB",
+    "from": "From {{end}}GB",
+    "total": "Total: ${{total}}"
+  },
+  "transferestimate": {
+    "title": "Transfer Estimate",
+    "exchange": "Exchange",
+    "channel": "Channel",
+    "estimated": "Estimated days of formatted data you can fetch*",
+    "days": "{{days}} days**",
+    "1": "*This is a estimate based on the size of sample datasets. The actual figure may vary.",
+    "2": "**If you used all quota on this single channel by fetching data from the filter endpoint with \"json\" format."
   },
   "faq": {
     "price": {
@@ -223,20 +247,37 @@
         "title": "Checkout"
       }
     },
-    "tabpane": {
-      "pricedetail": "Price Detail",
-      "permonth": "/month",
-      "transferestimate": "Transfer Estimate"
-    },
+    "total": "Total",
+    "quota": "Quota",
     "email": {
-      "title": "Enter Your E-mail Address",
+      "label": "Email Address",
       "detail": "We will send you a email to this address with a API-key and a password neccesary to login to our API Management Console.",
-      "placeholder": "Enter Your E-mail Address",
-      "proceed": "Proceed"
+      "placeholder": "Enter Your E-mail Address"
+    },
+    "credit": {
+      "title": "Credit Card Information"
+    },
+    "terms": {
+      "title": "Terms of Services",
+      "detail": "Please read our <1>Terms of Services</1> before the purchase.",
+      "label": "I have read and agree to the Terms of Services."
+    },
+    "proceed": "Proceed",
+    "confirmmodal": {
+      "title": "Confirm Payment?",
+      "detail": {
+        "1": "You are about to confirm the payment of ${{total}}.",
+        "2": "Payment procedure will immidiately start and can not be cancelled. Please note that we don't accept any cancels or refunds."
+      },
+      "confirm": "Confirm Payment",
+      "cancel": "Cancel"
     },
     "paymentsuccess": {
       "title": "Thank you!",
       "detail": "Thank you for purchasing our product! We will send you a email with your auto-generated password after the payment is captured. This process usually only requires about a few seconds, but it might take more than 1 minute(s) depending on the processing of the payment. If you think it is taking too much time, please send an email to the support."
+    },
+    "error": {
+      "title": "The purchase has not been completed"
     }
   },
   "footer": {

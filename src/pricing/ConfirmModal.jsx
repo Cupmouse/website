@@ -1,22 +1,25 @@
 import React from 'react'
 import { Modal, Button } from 'semantic-ui-react';
+import { useTranslation } from 'react-i18next';
 
 export default function ConfirmModal({ priceStr, open, onOK, onCancel }) {
+  const { t } = useTranslation();
+  
   return (
     <Modal open={open} >
-      <Modal.Header content="Confirm Payment?" />
+      <Modal.Header content={t('order.confirmmodal.title')} />
       <Modal.Content>
-        <p>You are about to confirm the payment of ${priceStr}.</p>
-        <p style={{ fontWeight: 'bold' }}>Payment procedure will immidiately start and can not be cancelled. Please note that we don't accept any cancels or refunds.</p>
+        <p>{t('order.confirmmodal.detail.1', { total: priceStr })}</p>
+        <p style={{ fontWeight: 'bold' }}>{t('order.confirmmodal.detail.2')}</p>
       </Modal.Content>
       <Modal.Actions>
         <Button
           primary
-          content="Confirm Payment"
+          content={t('order.confirmmodal.confirm')}
           onClick={onOK}
         />
         <Button
-          content="Cancel"
+          content={t('order.confirmmodal.cancel')}
           onClick={onCancel}
         />
       </Modal.Actions>

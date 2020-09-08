@@ -1,19 +1,23 @@
 import React from "react"
 import PropTypes from 'prop-types'
 import { Table } from "semantic-ui-react"
-import { PRICING, calcPriceDetail, PRICING_MAX_PREC } from "../constants";
+import { PRICING, calcPriceDetail, PRICING_MAX_PREC, calcPrice } from "../constants";
+import { useTranslation } from "react-i18next";
 
 export default function PriceDetail(props) {
+  const { t } = useTranslation();
+
   const { quota } = props;
   const prices = calcPriceDetail(quota);
+  const price = calcPrice(quota).toFixed(PRICING_MAX_PREC);
 
   return (
     <Table celled>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Class</Table.HeaderCell>
-          <Table.HeaderCell>Price/GB</Table.HeaderCell>
-          <Table.HeaderCell>Applied</Table.HeaderCell>
+          <Table.HeaderCell>{t('pricedetail.class')}</Table.HeaderCell>
+          <Table.HeaderCell>{t('pricedetail.pricepergb')}</Table.HeaderCell>
+          <Table.HeaderCell>{t('pricedetail.applied')}</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -21,11 +25,14 @@ export default function PriceDetail(props) {
           prices.map((price, classIndex) => {
             let name;
             if (classIndex === 0) {
-              name = `First ${PRICING[classIndex].end}GB`;
+              name = t('pricedetail.first', { start: PRICING[classIndex].end });
             } else if (classIndex === PRICING.length - 1) {
-              name = `From ${PRICING[classIndex - 1].end + 1}GB`;
+              name = t('pricedetail.from', { end: PRICING[classIndex - 1].end });
             } else {
-              name = `${PRICING[classIndex - 1].end + 1}GB to ${PRICING[classIndex].end}GB`;
+              name = t('pricedetail.to', {
+                start: PRICING[classIndex - 1].end + 1,
+                end: PRICING[classIndex].end,
+              });
             }
             const classPrice = PRICING[classIndex].price.toFixed(PRICING_MAX_PREC);
 
@@ -41,7 +48,7 @@ export default function PriceDetail(props) {
       </Table.Body>
       <Table.Footer>
         <Table.Row>
-          <Table.HeaderCell colSpan={4}>Total: ${prices.reduce((p, c) => p + c)}</Table.HeaderCell>
+          <Table.HeaderCell colSpan={4}>{t('pricedetail.total', { total: price })}</Table.HeaderCell>
         </Table.Row>
       </Table.Footer>
     </Table>

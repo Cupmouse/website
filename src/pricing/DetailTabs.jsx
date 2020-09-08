@@ -12,20 +12,20 @@ export default function DetailTabs({ quota }) {
 
   const tabPanes = [
     {
-      menuItem: t('order.tabpane.pricedetail'), render: () => (
+      menuItem: t('price.tabpane.pricedetail'), render: () => (
         <Tab.Pane>
           <p style={{ fontSize: "3em" }} >
-            ${price.toFixed(PRICING_MAX_PREC)} {t('order.tabpane.permonth')}
+            ${price.toFixed(PRICING_MAX_PREC)} {t('pricedetail.permonth')}
           </p>
-          <Header content={t('order.tabpane.pricedetail')} />
+          <Header content={t('pricedetail.title')} />
           <PriceDetail quota={quota} />
         </Tab.Pane>
       )
     },
     {
-      menuItem: t('order.tabpane.transferestimate'), render: () => (
+      menuItem: t('price.tabpane.transferestimate'), render: () => (
         <Tab.Pane>
-          <Header content={t('order.tabpane.transferestimate')} />
+          <Header content={t('price.tabpane.transferestimate')} />
           <QuotaDetail quota={quota} />
         </Tab.Pane>
       )
