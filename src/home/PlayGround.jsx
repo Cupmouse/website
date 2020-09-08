@@ -34,10 +34,10 @@ const stream = async () => {
 }
 
 stream()`,
-  },
-  {
-    name: t('demo.2.title'),
-    source: `const { createClient } = require('exchangedataset-node');
+    },
+    {
+      name: t('demo.2.title'),
+      source: `const { createClient } = require('exchangedataset-node');
 
 const client = createClient({
   apikey: "demo"
@@ -62,10 +62,10 @@ const stream = async () => {
 }
 
 stream()`,
-  },
-  {
-    name: t('demo.3.title'),
-    source: `const { createClient, replay } = require('exchangedataset-node');
+    },
+    {
+      name: t('demo.3.title'),
+      source: `const { createClient, replay } = require('exchangedataset-node');
 
 const client = createClient({
   apikey: "demo"
@@ -90,52 +90,44 @@ const stream = async () => {
 stream()`,
     },
   ]
-  
+
   return (
-    <Container {...props}>
-      <Header size="large" textAlign="center" icon="terminal" />
-      <Header size="large" textAlign="center" content={t('demo.title')} />
-      <Container fluid text textAlign="center">
-        <p>{t('demo.detail.1')}</p>
-        <p>{t('demo.detail.2')}</p>
-      </Container>
-      <Grid stackable columns={2}>
-        <Grid.Column textAlign="right">
-          <div style={{ textAlign: "center" }}>
-          </div>
-          <List id="test-api-list">
-            {
-              sources.map((obj, i) => (
-                <List.Item
-                  key={i}
-                  className={classNames({
-                    "normal-text": true,
-                    "selected-item": selected === i,
-                  })}
-                  onClick={() => setSelected(i)}
-                >
-                  {obj.name}
-                </List.Item>
-              ))
-            }
-          </List>
-        </Grid.Column>
-        <Grid.Column>
+    <Grid stackable columns={2}>
+      <Grid.Column textAlign="right">
+        <div style={{ textAlign: "center" }}>
+        </div>
+        <List id="test-api-list">
           {
-            loading ? (
-              <Placeholder style={{ height: "400px", margin: "0 auto" }}>
-                <Placeholder.Image />
-              </Placeholder>
-            ) : ""
+            sources.map((obj, i) => (
+              <List.Item
+                key={i}
+                className={classNames({
+                  "normal-text": true,
+                  "selected-item": selected === i,
+                })}
+                onClick={() => setSelected(i)}
+              >
+                {obj.name}
+              </List.Item>
+            ))
           }
-          <Runkit
-            minHeight="400px"
-            source={sources[selected].source}
-            nodeVersion="13"
-            onLoad={() => setLoading(false)}
-          />
-        </Grid.Column>
-      </Grid>
-    </Container>
+        </List>
+      </Grid.Column>
+      <Grid.Column>
+        {
+          loading ? (
+            <Placeholder style={{ height: "400px", margin: "0 auto" }}>
+              <Placeholder.Image />
+            </Placeholder>
+          ) : ""
+        }
+        <Runkit
+          minHeight="400px"
+          source={sources[selected].source}
+          nodeVersion="13"
+          onLoad={() => setLoading(false)}
+        />
+      </Grid.Column>
+    </Grid>
   );
 };

@@ -7,7 +7,7 @@ export default function Contact(props) {
   const { t } = useTranslation();
  
   return (
-    <Segment textAlign="center" {...props}>
+    <Segment piled textAlign="center" {...props}>
       <Header content={t('contactus.title')} />
       <p>{t('contactus.1')}</p>
       <p>{t('contactus.2')}</p>

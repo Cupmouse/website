@@ -16,7 +16,7 @@ export default function BriefDetail(props) {
           <p>{t('briefdetail.2')}</p>
         </Grid.Column>
         <Grid.Column only="large screen" width="3">
-          <MeltingClock width="100%" />
+          <MeltingClock alt="Melting Clock" width="100%" />
         </Grid.Column>
       </Grid.Row>
     </Grid>

@@ -6,7 +6,7 @@ function FeaturesMobile() {
   const { t } = useTranslation();
 
   return (
-    <Grid container relaxed textAlign="center">
+    <Grid relaxed textAlign="center">
       <Grid.Row>
         <Grid.Column>
           <Icon size="massive" name="fire" className="feature-fire" />
@@ -57,7 +57,7 @@ function FeaturesDesktop() {
   const { t } = useTranslation();
   
   return (
-    <Grid container relaxed columns={2} verticalAlign="middle">
+    <Grid relaxed columns={2} verticalAlign="middle">
       <Grid.Row style={{ padding: "2em 0" }}>
         <Grid.Column width={10} textAlign="right" className="feature-text">
           <Header size="huge" content={t('features.befree.title')} />
@@ -101,13 +101,13 @@ function FeaturesDesktop() {
 export default function Features(props) {
   
   return (
-    <div className="features" {...props}>
+    <>
       <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
         <FeaturesMobile />
       </Responsive>
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <FeaturesDesktop />
       </Responsive>
-    </div>
+    </>
   );
 };

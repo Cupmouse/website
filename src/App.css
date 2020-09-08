@@ -51,14 +51,8 @@
   cursor: pointer;
 }
 
-.features {
+#features {
   background: rgb(255, 240, 238);
-}
-
-.feature-libraries {
-  height: 80vh;
-  background: rgb(218, 156, 255);
-  background: linear-gradient(135deg, rgba(218, 156, 255, 1) 0%, rgba(255, 208, 242, 1) 100%);
 }
 
 .feature-fire {
