@@ -21,6 +21,13 @@
   margin: 0.33em 0;
 }
 
+.stat:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
 #test-api-list {
   /* runkit overwraps with this list, raise the z index */
   position: inherit;
@@ -50,35 +57,34 @@
 
 .feature-libraries {
   height: 80vh;
-  background: rgb(218,156,255);
-  background: linear-gradient(135deg, rgba(218,156,255,1) 0%, rgba(255,208,242,1) 100%); 
+  background: rgb(218, 156, 255);
+  background: linear-gradient(135deg, rgba(218, 156, 255, 1) 0%, rgba(255, 208, 242, 1) 100%);
 }
 
-
 .feature-fire {
-  background: rgb(255,141,0);
-  background: linear-gradient(164deg, rgb(255, 141, 0) 0%, rgba(231,34,0,1) 100%);
+  background: rgb(255, 141, 0);
+  background: linear-gradient(164deg, rgb(255, 141, 0) 0%, rgba(231, 34, 0, 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .feature-dollar {
-  background: rgb(0,142,255);
-  background: linear-gradient(164deg, rgba(26,221,28,1) 0%, rgba(0,142,255,1) 100%);
+  background: rgb(0, 142, 255);
+  background: linear-gradient(164deg, rgba(26, 221, 28, 1) 0%, rgba(0, 142, 255, 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .feature-book {
-  background: rgb(245,36,239);
-  background: linear-gradient(164deg, rgba(245,36,239,1) 0%, rgba(197,0,203,1) 100%);
+  background: rgb(245, 36, 239);
+  background: linear-gradient(164deg, rgba(245, 36, 239, 1) 0%, rgba(197, 0, 203, 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .feature-file {
-  background: rgb(179,219,255);
-  background: linear-gradient(164deg, rgba(179,219,255,1) 0%, rgba(16,0,203,1) 100%);
+  background: rgb(179, 219, 255);
+  background: linear-gradient(164deg, rgba(179, 219, 255, 1) 0%, rgba(16, 0, 203, 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

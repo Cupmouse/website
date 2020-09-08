@@ -26,10 +26,12 @@
       "label": "raw data accumulated"
     },
     "price": {
-      "label": "lowest per month"
+      "label": "lowest per month",
+      "popup": "See the price structure"
     },
     "exchanges": {
-      "label": "exchanges supported"
+      "label": "exchanges supported",
+      "popup": "See the list of supported exchanges"
     }
   },
   "demo": {
@@ -170,6 +172,11 @@
       "name": "Libraries",
       "detail": "Easily incorporate Exchangedataset to an existing project by utilizing libraries."
     }
+  },
+  "contactus": {
+    "title": "Contact Us",
+    "1": "If you have any questions or concerns, we are happy to assist you.",
+    "2": "Please feel free to contact us by email."
   },
   "price": {
     "suggestions": {
