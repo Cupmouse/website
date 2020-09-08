@@ -11,7 +11,7 @@ import { EMAIL_REGEX, calcPrice, PRICING_MAX_PREC } from '../constants';
 import { purchase } from '../apicall';
 
 export default function OrderSegment({ quota }) {
-  const [email, setEmail] = useState("simaoka@tutanota.com");
+  const [email, setEmail] = useState("");
   const [creditOK, setCreditOK] = useState(false);
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
   const [purchaseOnGoing, setPurchaseOnGoing] = useState(false);

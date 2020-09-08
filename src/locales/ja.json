@@ -172,20 +172,6 @@
     }
   },
   "price": {
-    "detail": {
-      "title": "API-key, Ticket, and Quota",
-      "1": "\"Ticket\" is similar to a prepaid card. It has a \"Quota\" and expiry date. A Ticket is attached to an API-key, which is used for authenticating customers in HTTP Endpoint. A Ticket can not move across API-keys once purchased.",
-      "quota": {
-        "title": "Quota",
-        "1": "Every transfer from HTTP Endpoint consumes quota by its size in bytes. If the response is compressed, the size of the uncompressed data is used. Consumption per call never goes below 1024 (1kb) to prevent malicious use.",
-        "2": "Exceptionally, Snapshot Endpoint, which is used to fetch the initial state of the channel, also consumes quota by how much data it had scanned, along with transfer consumption. This Endpoint is called only once per continuous data (a request from libraries), so it is negligible for the majority of customers.",
-        "3": "On access using an API-key, Tickets attached to it with the closest expiry date is used in priority."
-      },
-      "apikeyticket": {
-        "title": "API-key and Ticket",
-        "1": "New customers will receive a pair of API-key and Ticket. All Tickets will expire in 30 days (a month) including the day of purchase."
-      }
-    },
     "suggestions": {
       "title": "おすすめのプラン",
       "tradedata": "取引データ向け",
@@ -203,6 +189,24 @@
       "detail": "必要なクオータの量をGB単位で入力してください。少し余裕を持つことをおすすめします。",
       "placeholder": "必要なクオータをGB単位で指定"
     }
+  },
+  "faq": {
+    "price": {
+      "title": "値段はどのように計算されるのか？",
+      "1": "当社の料金体系はクオータ制となっております。下の表は計算時に用いられる「クオータ/GB/月」の価格です。",
+      "2": "クラス別価格と、それに当てはまるクォータを掛け合計したものが合計価格となります。"
+    },
+    "newcustomer": {
+      "title": "何を購入することになるのか？",
+      "1": "チケットが付属した新しいAPIキーが電子メールで届きます。チケットには注文した分のクォータが付いています。",
+      "2": "また、APIキーの管理やチケットの新規購入のために便利な「APIキーマネジメントコンソール」にログインするための自動生成パスワードもお送りします。"
+    },
+    "howfast": {
+      "title": "APIキーを受け取るまでにどれぐらいの時間がかかるのか？",
+      "1": "通常は数秒程度で済みますが、支払いの処理によっては1分以上かかる場合もあります。",
+      "2": "受け取り次第、すぐにAPIを利用できるようになります。"
+    },
+    "more": "サービス全般のよくあるご質問については、こちらをクリックしてください。"
   },
   "order": {
     "title": "APIキーの購入",
@@ -233,6 +237,18 @@
     "paymentsuccess": {
       "title": "お買い上げいただき有難うございます。",
       "detail": "エクスチェンジデータセットの製品をご購入いただき有難うございます。お支払いがシステムによってキャプチャーされた後、メールを送信します。大抵の場合数秒で完了しますが、クレジットカードの処理により1分以上掛かる場合があります。通常より時間が掛かり過ぎている場合は、サポートへご連絡ください。"
+    }
+  },
+  "footer": {
+    "servicelinks": {
+      "title": "サービス一覧",
+      "home": "ウェブページ",
+      "documentation": "ドキュメンテーション",
+      "support": "サポートメール"
+    },
+    "about": {
+      "title": "当方について",
+      "basedin": "日本で運営しています"
     }
   }
 }

@@ -198,13 +198,13 @@
     },
     "newcustomer": {
       "title": "What will I get when I order from this website?",
-      "1": "You will receive a new API-key via email. API-key comes with a brand-new Ticket with the quota you have ordered.",
+      "1": "You will receive via email a new API-key with a Ticket with the quota you have ordered.",
       "2": "You will also receive an auto-generated password to login to the API-key Management Console, where you can manage your API-keys and purchase new Tickets."
     },
     "howfast": {
       "title": "How much time is it take to receive an API-key?",
       "1": "The process usually only requires about a few seconds, but it might take more than 1 minute depending on the processing of the payment.",
-      "2": "Upon receipt, you will be able to use the API-key immediately."
+      "2": "Upon receipt, you will be able to use the API immediately."
     },
     "more": "For general, service related questions, click here."
   },
