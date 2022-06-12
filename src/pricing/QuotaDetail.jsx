@@ -8,34 +8,40 @@ const dataSizes = [
     exchange: "Bitmex",
     channel: "trade",
     minuteSize: 1.95087412269e-05,
+    sizeFactor: 1,
     time: 70689,
   },
   {
     exchange: "Bitfinex",
     channel: "trades_tBTCUSD",
     minuteSize: 4.77597997006e-06,
+    sizeFactor: 1,
     time: 58017,
   },
   {
     exchange: "Bitflyer",
     channel: "executions_FX_BTC_JPY",
     minuteSize: 0.000159854990327,
+    sizeFactor: 0.2,
     time: 332546,
   },
   {
     exchange: "Bitmex",
-    channel: "orderBookL2",
-    minuteSize: 0.00261229901064,
+    channel: "orderBookL2_XBTUSD",
+    sizeFactor: 0.2,
+    minuteSize: 0.00121527777778,
   },
   {
     exchange: "Bitfinex",
     channel: "book_tBTCUSD",
+    sizeFactor: 0.2,
     minuteSize: 0.000956595562618,
     time: 200524,
   },
   {
     exchange: "Bitflyer",
     channel: "board_FX_BTC_JPY",
+    sizeFactor: 0.2,
     minuteSize: 0.0012000080654,
     time: 498695,
   },
@@ -57,7 +63,7 @@ export default function QuotaDetail(props) {
         <Table.Body>
           {
             dataSizes.map((exa) => {
-              const days = props.quota / exa.minuteSize / 60 / 24;
+              const days = props.quota / (exa.minuteSize*exa.sizeFactor) / 60 / 24;
               return (
                 <Table.Row key={exa.exchange+exa.channel}>
                   <Table.Cell>{exa.exchange}</Table.Cell>

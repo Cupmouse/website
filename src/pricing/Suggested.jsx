@@ -10,29 +10,29 @@ const suggested = [
       color: "blue",
       type: "tradedata",
     },
-    quota: 30,
+    quota: 3,
   },
   {
     recommend: null,
-    quota: 200,
+    quota: 20,
   },
   {
     recommend: {
       color: "red",
       type: "recommended",
     },
-    quota: 500,
+    quota: 50,
   },
   {
     recommend: null,
-    quota: 1000,
+    quota: 100,
   },
   {
     recommend: {
       color: "violet",
       type: "enterprise",
     },
-    quota: 3000,
+    quota: 300,
   },
 ];
 

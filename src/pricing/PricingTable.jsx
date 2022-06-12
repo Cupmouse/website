@@ -11,8 +11,8 @@ export default function (props) {
     <Table celled {...props}>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Class</Table.HeaderCell>
-          <Table.HeaderCell>Price/GB</Table.HeaderCell>
+          <Table.HeaderCell>{t('pricedetail.class')}</Table.HeaderCell>
+          <Table.HeaderCell>{t('pricedetail.pricepergb')}</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -20,11 +20,14 @@ export default function (props) {
           PRICING.map((e, classIndex) => {
             let name;
             if (classIndex === 0) {
-              name = `First ${e.end}GB`;
+              name = t('pricedetail.first', { start: PRICING[classIndex].end });
             } else if (classIndex === PRICING.length - 1) {
-              name = `From ${PRICING[classIndex - 1].end + 1}GB`;
+              name = t('pricedetail.from', { end: PRICING[classIndex - 1].end });
             } else {
-              name = `${PRICING[classIndex - 1].end + 1}GB to ${e.end}GB`;
+              name = t('pricedetail.to', {
+                start: PRICING[classIndex - 1].end + 1,
+                end: PRICING[classIndex].end,
+              });
             }
             const classPrice = PRICING[classIndex].price;
 

@@ -11,24 +11,20 @@ export const HOME_URL = "/";
 export const PRICE_URL = "/price";
 export const PRICING = [
   {
-    end: 1,
-    price: 10,
+    end: 10,
+    price: 13,
   },
   {
-    end: 30,
-    price: 1,
+    end: 50,
+    price: 12,
   },
   {
-    end: 200,
-    price: 0.4,
-  },
-  {
-    end: 1000,
-    price: 0.35,
+    end: 100,
+    price: 11,
   },
   {
     end: Number.POSITIVE_INFINITY,
-    price: 0.3,
+    price: 10,
   },
 ];
 export const PRICING_MAX_PREC = 2;
